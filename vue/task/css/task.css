@@ -1,0 +1,58 @@
+@charset "UTF-8";
+*{
+  box-sizing: border-box;
+}
+.container{
+  width: 40%;
+  padding: 30px;
+  border: 1px solid #dfdada;
+  margin: 0 auto
+}
+.container>input{
+  width: 100%;
+  padding: 5px;
+}
+a{
+  text-decoration: none;
+  color: inherit;
+}
+.fr{
+  float: right;
+}
+.btn{
+  display: inline-block;
+  border: 1px solid #dfdada;
+  border-top: none;
+  padding: 5px 15px;
+}
+.btn:hover{
+  background: gainsboro;
+}
+.tip{
+  padding-top: 5px;
+  display: inline-block;
+  color: red;
+  font-size: 12px;
+}
+.notask{
+  border:1px solid #e97b2c;
+  font-size: 14px;
+  padding: 5px;
+}
+ul{
+  list-style: none;
+  padding: 0;
+}
+ul li{
+  border-bottom:1px solid red;
+  padding: 5px;
+}
+ul li.done label{
+  text-decoration: line-through;
+  color:#dad2d2;
+}
+ul li i{
+  float: right;
+  font-size: 18px;
+  cursor: pointer;
+}

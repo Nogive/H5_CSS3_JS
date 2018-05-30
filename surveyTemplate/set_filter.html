@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>参数设置-过滤条件设置</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/nprogress.css" rel="stylesheet">
+    <link href="css/custom.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>MJP</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>欢迎回来,</span>
+                <h2 class="userName"></h2>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <!-- /menu profile quick info -->
+            <br />
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>菜单</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-sitemap"></i> 人员组织 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="sales.html">sales层级设置</a></li>
+                      <li><a href="not_sales.html">非sales岗位管理</a></li>
+                      <li><a href="index.html">其他</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-desktop"></i> Outlet管理 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="outlet_search.html">Outlet查询</a></li>
+                      <li><a href="outlet_assign.html">Outlet分配</a></li>
+                      <li><a href="outlet_approve.html">Outlet审批</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-edit"></i> 普查信息 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="survey_mode.html">模板设置</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="visitplan.html"><i class="fa fa-table"></i> 拜访计划 <span class="fa fa-chevron-down"></span></a>
+                    
+                  </li>
+                  <li><a><i class="fa fa-cog"></i>参数设定 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="set_service.html">Service Mode</a></li>
+                      <li><a href="set_frequency.html">拜访频率</a></li>
+                      <li><a href="set_filter.html">过滤条件设定</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- /sidebar menu -->
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+							<h3 class="mainTitle">Outlet 状态过滤条件设定</h3>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="userName user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt="">
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="javascript:;">个人主页 </a></li>
+                    <li>
+                      <a href="javascript:;">
+                        <span class="badge bg-red pull-right">50%</span>
+                        <span>设置</span>
+                      </a>
+                    </li>
+                    <li><a href="javascript:;">帮助</a></li>
+                    <li><a id="logout" href="javascript:;"><i class="fa fa-sign-out pull-right"></i> 退出</a></li>
+                  </ul>
+                </li>
+
+                <li role="presentation" class="dropdown">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green">1</span>
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    <li>
+                      <a>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John</span>
+                          <span class="time">3分钟之前</span>
+                        </span>
+                        <span class="message">
+                          	你好你好你好
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="text-center">
+                        <a>
+                          <strong>浏览全部</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="row">
+            	<div class="clearfix"></div>
+              <div class="" role="tabpanel" data-example-id="togglable-tabs">
+	              <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+	                <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Universe->Target Universe 条件设定</a>
+	                </li>
+	                <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Target Universe->MVO 条件设定</a>
+	                </li>
+	              </ul>
+	              <div id="myTabContent" class="tab-content">
+	                <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+	                  <div class="col-md-4 col-xs-12">
+		              		<p>门店面积</p>
+		              		<select class="form-control">
+			                  <option>大于100平方</option>
+			                  <option>小于于100平方</option>
+			                  <option>等于100平方</option>
+			                </select>
+		              	</div>
+		              	<div class="col-md-4 col-xs-12">
+		              		<p>SKU数量</p>
+		              		<select class="form-control">
+			                  <option>大于2个</option>
+			                  <option>小于2个</option>
+			                </select>
+		              	</div>
+		              	<div class="col-md-4 col-xs-12">
+		              		<p>竞品种类</p>
+		              		<select class="form-control">
+			                  <option>包含百威</option>
+			                  <option>包含青岛</option>
+			               </select>
+		              	</div>
+		              	<p>全部符合以上条件的Universe,将自动转变为Target Universe</p>
+	                </div>
+	                <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+	                   <div class="col-md-4 col-xs-12">
+		              		<p>门店面积</p>
+		              		<select class="form-control">
+			                  <option>大于100平方</option>
+			                  <option>小于于100平方</option>
+			                  <option>等于100平方</option>
+			                </select>
+		              	</div>
+		              	<div class="col-md-4 col-xs-12">
+		              		<p>SKU数量</p>
+		              		<select class="form-control">
+			                  <option>大于2个</option>
+			                  <option>小于2个</option>
+			                </select>
+		              	</div>
+		              	<div class="col-md-4 col-xs-12">
+		              		<p>竞品种类</p>
+		              		<select class="form-control">
+			                  <option>包含百威</option>
+			                  <option>包含青岛</option>
+			               </select>
+		              	</div>
+		              	<p>全部符合以上条件的Target Universe,将自动转变为MVO</p>
+	                </div>
+	              </div>
+	            </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/common/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/common/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="js/common/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="js/common/nprogress.js"></script>
+    
+    <!-- Custom Theme Scripts -->
+    <script src="js/common/custom.min.js"></script>
+    <script src="js/common/global.js"></script>
+  </body>
+</html>

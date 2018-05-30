@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Outlet 管理</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/framework7/1.6.5/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/framework7/1.6.5/css/framework7.ios.colors.min.css">
+    <link rel="stylesheet" href="../common/css/framework7-icons.css" />
+    <link rel="stylesheet" href="../common/fonts/icons/iconfont.css" />
+    <link rel="stylesheet" href="../common/css/common.css">
+    <link rel="stylesheet" href="css/outlet.css" />
+</head>
+<body>
+	<div class="views">
+		<!--默认为第一个tab-->
+		<div class="view view-main">
+			<div class="pages navbar-through">
+				<div data-page="outlet" class="page">
+					<div class="buttons-row ol-button">
+						<a href="#my-outlet" class="tab-link button active">我的Outlet</a>
+						<a href="#my-mvo" class="tab-link button">我能看到的MVO</a>
+						<a href="#my-approve" class="tab-link button disnone">需要我审批的outlet</a>
+						<a href="#my-pmvo" id="pmvo" class="tab-link button disnone">需要我分配的MVO</a>
+					</div>
+					<form class="searchbar searchbar-init" id="mjpsearch">
+						<div class="searchbar-input search-box">
+							<input type="search" placeholder="输入关键字搜索" id="qString" onsearch="searchOutlet()" />
+						</div><a href="#" class="searchbar-cancel" id="cancleSearch">取消</a>
+					</form>
+					<div class="searchbar-overlay"></div>
+					
+					<div class="page-content pull-to-refresh-content infinite-scroll">
+						<div class="pull-to-refresh-layer">
+						    <div class="preloader"></div>
+						    <div class="pull-to-refresh-arrow onlyForOutlet"></div>
+					  	</div>
+						<div class="tabs">
+							<div id="my-outlet" class="tab">
+								<div class="list-block outlist">
+									<ul class="outlet-list" id="my-outlet-list">
+										<li class="item-content">
+											<div class="item-inner">
+												<div class="item-title"></div>
+												<div class="item-after"><span class="statusText"></span></div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div id="my-mvo" class="tab">
+								<div class="list-block outlist list-block-mvo">
+									<ul class="outlet-list" id="my-mvo-list">
+										<li class="item-content">
+											<div class="item-inner">
+												<div class="item-title"></div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div id="my-approve" class="tab">
+								<div class="list-block outlist list-block-approve">
+									<ul class="pend-list" id="my-approve-list">
+										<li class="item-content">
+											<div class="item-inner">
+												<div class="item-title"></div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div id="my-pmvo" class="tab">
+								<div class="list-block outlist list-block-pmvo">
+									<ul class="pend-list" id="my-pmvo-list">
+										<li class="item-content">
+											<div class="item-inner">
+												<div class="item-title"></div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!--无限滚动-->
+						<div class="content-block" id="nomore">
+							<div class="content-block-inner nomore">我是有底线的</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="https://cdn.bootcss.com/framework7/1.6.5/js/framework7.js"></script>
+	<script src="https://cdn.bootcss.com/axios/0.17.1/axios.js"></script>
+	<script type="text/javascript" src="../common/js/common.js"></script>
+	<script type="text/javascript" src="../common/js/WebViewJavascriptBridge.js"></script>
+	<script type="text/javascript" src="js/createField.js"></script>
+	<script type="text/javascript" src="js/outletmanage.js"></script>
+</body>
+</html>

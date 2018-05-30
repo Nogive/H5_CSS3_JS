@@ -1,0 +1,203 @@
+@charset "utf-8";
+/*outlet主页面*/
+.disnone,
+.list-block .disnone {
+  display: none;
+}
+.infotitle{
+	background: #007aff;
+	color: white;
+	text-align: center;
+	padding: 15px 0px;
+	margin-bottom: 10px;
+}
+.same-block{
+	padding: 0px 15px;
+}
+.infosame{
+	min-height: 300px;
+	padding: 12px 0px;
+}
+#allField .list-block,.same-block .list-block{
+	padding: 0px;
+}
+.list-block .item-content{
+	padding-left: 0px;
+}
+.list-block ul:before{
+	width: 0;
+}
+.underline_none .list-block ul:after{
+	width: 0%;
+}
+.assignlist .item-content{
+	border-bottom: 1px solid #BFBFBF;
+}
+.outlist .item-title{
+	padding-left: 15px;
+}
+/*编辑outlet页面*/
+.inbox{
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
+.inbox p{
+	color: black;
+	margin-bottom: 10px;
+}
+.inbox input{
+	border: 1px solid #BFBFBF;
+	width: 100%;
+	height: 50px;
+	padding: 0px 5px;
+}
+.inbox textarea{
+	border: 1px solid #BFBFBF;
+	width: 100%;
+	height: 100px;
+	padding:8px;
+	resize: none;
+}
+.backgrey input{
+	background: #d0cfcf;
+}
+.classify p{
+	padding: 0 15px;
+	margin-bottom: 10px;
+}
+.mapbox{
+	margin-bottom: 10px;
+}
+.mapimg{
+	border: 1px solid #BFBFBF;
+	height: 200px;
+	width: 686px;
+	position: relative;
+}
+.demapimg{
+	width: 100%;
+}
+.mapimg p{
+	position: absolute;
+	top: 90px;
+    left: 237px;
+    color: #bfbfbf;
+}
+.mapbtn{
+	height: 200px;
+	width: 45px;
+	text-align: center;
+	margin-left: 7px;
+}
+.mapbtn i{
+	font-size: 40px;
+	color: #007AFF;
+	display: inline-block;
+	margin-top: 30px;
+}
+
+.about-data .item-input{
+	border: 1px solid #BFBFBF;
+}
+.clearpad15{
+	padding: 0px;
+}
+.searchbar{
+	border-top: 1px solid #BFBFBF;
+}
+/*刷新的图标
+.pull-to-refresh-layer{
+	margin-top: 0px;
+}*/
+.pull-to-refresh-content.refreshing {
+    -webkit-transform: translate3d(0,0px,0);
+    transform: translate3d(0,0px,0); 
+}
+.statusText{
+	margin-right: 70px;
+}
+.fixwidth{
+	width: 80px;
+	text-align: right;
+}
+.list-block ul.surinfo:after{
+	width: 0;
+}
+.bigbox{
+	border-bottom: 1px solid #c8c7cc;
+	padding: 13px 0px;
+}
+.textDir{
+	text-align: right;
+	padding-right: 15px;
+	color: #8e8e93;
+}
+.mode{
+	margin: 0px;
+}
+.list-block .childTable ul{
+	padding-left: 0px;
+}
+.color-red{
+	color: red;
+}
+.rejectbox{
+	resize: none;
+	border: 1px solid #C8C7CC;
+	margin-top: 10px;
+	width: 100%;
+	height: 140px;
+	padding: 5px;
+}
+.martop0{
+	margin-top: 0px;
+}
+/*无限滚动样式*/
+.infinite-scroll-preloader {
+  margin-top: 10px;
+  text-align: center;
+  height: 100px;
+}
+.infinite-scroll-preloader .preloader {
+  width:34px;
+  height:34px;
+} 
+#nomore{
+	display: none;
+	text-align: center;
+	margin: 10px 0px;
+} 
+#nomore .content-block-inner{
+	height: 100px;
+}  
+#nomore .content-block-inner:after{
+	width: 0%;
+}
+#nomore .content-block-inner:before{
+	width: 0;
+}
+.modal{
+	width: 400px;
+	margin-left: -200px;
+}
+.cancleModel{
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+.rd-container{
+	top: -240px !important;
+    left: 0px !important;
+}
+.inbox input[type="text"] {
+  padding: 0px 5px;
+}
+.border-red input,.border-red textarea{
+	border: 1px solid red;
+}
+.border-red ul:after{
+	background: red;
+}
+.about-data input{
+	background: white;
+}

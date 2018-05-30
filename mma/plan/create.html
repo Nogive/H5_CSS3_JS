@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+	    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>拜访计划制定</title>
+	    <link rel="stylesheet" href="../common/fonts/icons/iconfont.css" />
+		<link href="//webapi.amap.com/ui/1.0/ui/overlay/SimpleMarker/examples/" />
+		<link rel="stylesheet" href="css/plan.css" />
+	</head>
+	<body>
+		<div class="pages">
+			<div data-page='create' class="container page">
+				<div class="main clearfix">
+					<div class="fleft clientlist">
+						<div class="navBtn">
+							<h2 id="mvoTotal">0</h2>
+							<button class="clear" id="clearAll">清空</button>
+							<button class="label" id="hideLabel">隐藏</button>
+						</div>
+						<div id="iscroll">
+							<ul id="clientList" class="createList">
+							</ul>
+						</div>
+					</div>
+					<div class="fleft clearfix the_calendar">
+						<div class="fleft recompute">
+							<p>本月负荷（实际/预期）: <span id="factLoad"></span>小时/<span id="prepareLoad"></span>小时</p>
+							<p id="currentMonth"></p>
+						</div>
+						<div id="calendar"></div>
+						<div id="mm" class="local">
+							<div id="container" class="map local" tabindex="0"></div>
+						</div>
+					</div>
+				</div>
+				<div id="planedClient" class="c_list disnone">
+					<h2 id="decribeTitle"></h2>
+					<a id="cancle" class="cancleModel iconfont" href="javascript:;">&#xe723;</a>
+					<ul id="planedList">
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.1&key=ca73313e196b471041ccd54b1e80df5c"></script>
+		<script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+		<script src="//webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
+	</body>
+</html>

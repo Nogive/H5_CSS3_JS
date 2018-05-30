@@ -1,0 +1,55 @@
+{
+	"code":0,
+	"data":{
+		"name":"上海徐汇",
+		"timestamp":"20180126",
+		"items":[
+			{ 
+				"name": "网点名称", 
+				"type": "WenBen", 
+				"value":"百联"
+			},
+			{ 
+				"name": "网点描述", 
+				"type": "DuoXingWenBen", 
+				"value":"这是描述，这是秒速，描述描述秒速"
+			},
+			{
+				"name": "喜力数量", 
+				"type": "ShuZi", 
+				"value":200
+			},
+			{
+				"name": "进货日期", 
+				"type": "RiQi", 
+				"value":"20180126"
+			},
+			{ 
+				"name": "喜力330ML数量", 
+				"type": "DanXuanKuang", 
+				"value":"100-200"
+			},
+			{
+				"name": "竞争品牌", 
+				"type": "DuoXuanKuang", 
+				"value":"青岛"
+			},
+			{
+				"name": "喜力铺货", 
+				"type": "MingXi", 
+				"details":[
+					{
+						"name": "铺货名称", 
+						"type": "WenBen", 
+						"value":"喜力550ML"
+					},
+					{
+						"name": "铺货数量", 
+						"type": "DanXuanKuang", 
+						"value":"200-300"
+					}
+				]
+			}
+		]
+	}
+}

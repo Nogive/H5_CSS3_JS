@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Outlet管理-Outlet审批</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/nprogress.css" rel="stylesheet">
+    <link href="css/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="css/datePicker/daterangepicker.css" rel="stylesheet">
+    <!-- bootstrap-datetimepicker -->
+    <link href="css/datePicker/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="css/custom.min.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+  </head>
+  <body class="nav-md" data-num="approve">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>MJP</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>欢迎回来,</span>
+                <h2 class="userName"></h2>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <!-- /menu profile quick info -->
+            <br />
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>菜单</h3>
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-sitemap"></i> 人员组织 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="sales.html">sales层级设置</a></li>
+                      <li><a href="not_sales.html">非sales岗位管理</a></li>
+                      <li><a href="index.html">其他</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-desktop"></i> Outlet管理 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="outlet_search.html">Outlet查询</a></li>
+                      <li><a href="outlet_assign.html">Outlet分配</a></li>
+                      <li><a href="outlet_approve.html">Outlet审批</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-edit"></i> 普查信息 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="survey_mode.html">模板设置</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="visitplan.html"><i class="fa fa-table"></i> 拜访计划 <span class="fa fa-chevron-down"></span></a>
+                    
+                  </li>
+                  <li><a><i class="fa fa-cog"></i>参数设定 <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="set_service.html">Service Mode</a></li>
+                      <li><a href="set_frequency.html">拜访频率</a></li>
+                      <li><a href="set_filter.html">过滤条件设定</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!-- /sidebar menu -->
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+							<h3 class="mainTitle">需要我审批的outlet</h3>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="userName user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="images/img.jpg" alt="">
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="javascript:;">个人主页 </a></li>
+                    <li>
+                      <a href="javascript:;">
+                        <span class="badge bg-red pull-right">50%</span>
+                        <span>设置</span>
+                      </a>
+                    </li>
+                    <li><a href="javascript:;">帮助</a></li>
+                    <li><a id="logout" href="javascript:;"><i class="fa fa-sign-out pull-right"></i> 退出</a></li>
+                  </ul>
+                </li>
+
+                <li role="presentation" class="dropdown">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green">1</span>
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    <li>
+                      <a>
+                        <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                        <span>
+                          <span>John</span>
+                          <span class="time">3分钟之前</span>
+                        </span>
+                        <span class="message">
+                          	你好你好你好
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <div class="text-center">
+                        <a>
+                          <strong>浏览全部</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-md-4">
+	              <div class="tablemin">
+              		<table class="table table-striped jambo_table">
+		                <thead>
+		                  <tr class="headings">
+		                    <th class="column-title">名称</th>
+		                    <th class="column-title">状态</th>
+		                    <th class="column-title">区/县</th>
+		                    <th class="bulk-actions" colspan="7">
+		                      <a class="antoo" style="color:#fff; font-weight:500;">已选中 ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
+		                    </th>
+		                  </tr>
+		                </thead>
+		                <tbody id="approveBox" class="recordBox">
+		                </tbody>
+		              </table>
+              	</div>
+	              <div class="pageAndbtn clearfix">
+									<ul class="pagination pagination-sm martb0" id="pageAll">
+										
+									</ul>
+									<div class="clearfix"></div>
+									<p class="text-right pageb">共 <span id="pageTotal"></span> 页</p>
+	              </div>
+	            </div>
+            	<div class="col-md-8 approveStyle display-none" id="mainPart">
+								<div class="col-md-12 reasonBox display-none" id="reasonText">
+									<p>审批被驳回，驳回理由如下：</p>
+									<p class="red">地址不正确。</p>
+								</div>
+            		<div class="col-md-6 noTitle"><b>原数据</b></div>
+            		<div class="col-md-6 padl-0 noTitle">
+            			<b>现数据</b>
+            			<div class="apBtns" id="optBox">
+	            			<button id="reject" type="button" class="approveBtn btn btn-default">驳回</button>
+										<button id="pass" type="button" class="approveBtn btn btn-default">通过</button>
+										<button id="submit" type="button" class="saveBtn btn btn-default display-none">保存</button>
+	            		</div>
+								</div>
+            		<div class="clearfix"></div>
+            		<div class="sameStyle approveDetal">
+            			<div class="col-md-6 sameCom leftInfo">
+		            		<div class="col-md-6">
+		            			<p>网点名称</p>
+		            			<input id="outletNameLeft" type="text" disabled/>
+		            		</div>
+		            		<div class="col-md-6 backgrey">
+		            			<p>网点编号</p>
+		            			<input id="outletCodeLeft" type="text" disabled/>
+		            		</div>
+		            		<div class="col-md-12">
+		            			<p>网点地址</p>
+		            			<input id="addressLeft" type="text" disabled/>
+		            		</div>
+		            		<div class="col-md-12 map">
+		            			<p>GPS位置</p>
+		            			<img src="" id="omapLeft" alt="" />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>省/直辖市</p>
+		            			<select id="provinceLeft" name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>城市</p>
+		            			<select id="cityLeft" name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>区/县</p>
+		            			<select id="regionLeft" name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>城市编号</p>
+		            			<select id="thecityCodeLeft" name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>EOE标准渠道</p>
+		            			<select id="channelLeft" name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>主渠道</p>
+		            			<select id="scaleLeft" name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>店的规模 面积</p>
+		            			<input id="scaleSpaceLeft" type="text" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>店的规模 桌数</p>
+		            			<input id="scaleTableNumberLeft" type="text" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>店的规模 包厢或卡座</p>
+		            			<input id="scaleBoxNumberLeft" type="text" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>店的规模 收银台数</p>
+		            			<input id="scaleCashierNumberLeft" type="text" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>邮编</p>
+		            			<input id="postCodeLeft" type="text" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>喜力PG数量</p>
+		            			<input id="pgNumberLeft" type="number" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点体量</p>
+		            			<input id="totalVolumeLeft" type="text" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>冰箱数量</p>
+		            			<input id="fridgeNumberLeft" type="number" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>桶啤机数量</p>
+		            			<input id="dbiNumberLeft" type="number" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点负责人（老板）</p>
+		            			<input id="bossLeft" type="text" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点负责人（店长）</p>
+		            			<input id="shopkeeperLeft" type="text" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点负责人联系号码</p>
+		            			<input id="mobileLeft" type="text" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点负责人办公室电话</p>
+		            			<input id="phoneLeft" type="text" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>是否连锁店</p>
+		            			<select id="chainLeft" name="" disabled>
+		            				<option value="1">是</option>
+		            				<option value="2">否</option>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点类型</p>
+		            			<select id="outletTypeLeft" name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>人均消费</p>
+		            			<select id="averageConsumptionLeft" name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6 mulBox">
+		            			<p>竞品信息</p>
+		            			<input type="text" id="competitorBrandsLeft" name="" disabled />
+		            		</div><div class="col-md-6">
+		            			<p>(区块)人流量</p>
+		            			<select id="trafficLeft" name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点等级</p>
+		            			<select id="classificationLeft" name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点策略</p>
+		            			<select id="outletStrategyLeft" name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点合约类型</p>
+		            			<select id="agreementsTypeLeft" name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>对象类型</p>
+		            			<select id="duixiangTypeLeft" name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>开关店状态</p>
+		            			<select id="stateLeft" name="" disabled>
+		            				<option value="open">营业中</option>
+		            				<option value="close">永久关闭</option>
+		            				<option value="3">临时关闭</option>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点分类</p>
+		            			<select id="classificationLeft" name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>拜访频率</p>
+		            			<select id="callFrequencyLeft" name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>SIS代理人代码</p>
+		            			<select id="sisOwnerLeft" name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>SIS代理人名称</p>
+		            			<select id="sisNameLeft" name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>1p经销商</p>
+		            			<input id="dealer1pLeft" type="text" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>1p备用经销商</p>
+		            			<input id="standbyDealer1pLeft" type="text" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>2p经销商</p>
+		            			<input id="dealer2pLeft" type="text" disabled />
+		            		</div>
+			            	<div class="col-md-12">
+		            			<p>最近开店日期</p>
+	                    <div class="input-group">
+		                    <input id="createdTimestampLeft" type='text' disabled />
+		                    <span class="input-group-addon">
+		                       <span class="glyphicon glyphicon-calendar"></span>
+		                    </span>
+	                    </div>
+		            		</div>
+		            		<div class="col-md-12">
+		            			<p>最近关店日期</p>
+		            			<div class="input-group">
+		                    <input id="closedTimestampLeft" type='text' disabled />
+		                    <span class="input-group-addon">
+		                       <span class="glyphicon glyphicon-calendar"></span>
+		                    </span>
+	                    </div>
+		            		</div>
+		            		<div class="col-md-12">
+		            			<p>即将重开日期</p>
+		                  <div class='input-group'>
+		                    <input id="reopenTimestampLeft" type='text' disabled />
+		                    <span class="input-group-addon">
+		                       <span class="glyphicon glyphicon-calendar"></span>
+		                    </span>
+	                    </div>
+		            		</div>
+	            		</div>
+	            		<div class="col-md-6 sameCom" id="newPart">
+	            			<form id="mjpForm">
+		            		<div class="col-md-6">
+		            			<p>网点名称*</p>
+		            			<input id="outletNameRight" type="text" disabled required/>
+		            		</div>
+		            		<div class="col-md-6 backgrey">
+		            			<p>网点编号</p>
+		            			<input class="disabled" id="outletCodeRight" type="text" disabled/>
+		            		</div>
+		            		<div class="col-md-12">
+		            			<p>网点地址*</p>
+		            			<input id="addressRight" type="text" disabled required/>
+		            		</div>
+		            		<div class="col-md-12 map">
+		            			<p>GPS位置</p>
+		            			<img src="" id="omapRight" alt="" />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>省/直辖市*</p>
+		            			<select id="provinceRight" data-field='select' disabled required>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>城市*</p>
+		            			<select id="cityRight" data-field='select' disabled required>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>区/县*</p>
+		            			<select id="regionRight" data-field='select' disabled required>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>城市编号*</p>
+		            			<select id="thecityCodeRight" data-field='select' name="" disabled required>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>EOE标准渠道*</p>
+		            			<select id="channelRight" data-field='select' disabled required>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>主渠道</p>
+		            			<select id="scaleRight" data-field='select' disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>店的规模 面积*</p>
+		            			<input id="scaleSpaceRight" type="text" disabled required/>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>店的规模 桌数</p>
+		            			<input id="scaleTableNumberRight" type="text" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>店的规模 包厢或卡座</p>
+		            			<input id="scaleBoxNumberRight" type="text" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>店的规模 收银台数</p>
+		            			<input id="scaleCashierNumberRight" type="text" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>邮编</p>
+		            			<input id="postCodeRight" type="text" disabled />
+		            		</div>
+		            		
+		            		<div class="col-md-6">
+		            			<p>喜力PG数量</p>
+		            			<input id="pgNumberRight" type="number" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点体量*</p>
+		            			<input id="totalVolumeRight" type="text" disabled required/>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>冰箱数量*</p>
+		            			<input id="fridgeNumberRight" type="number" disabled required/>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>桶啤机数量*</p>
+		            			<input id="dbiNumberRight" type="number" disabled required/>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点负责人（老板）*</p>
+		            			<input id="bossRight" type="text" disabled required/>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点负责人（店长）*</p>
+		            			<input id="shopkeeperRight" type="text" disabled required/>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点负责人联系号码*</p>
+		            			<input id="mobileRight" type="text" disabled required/>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点负责人办公室电话</p>
+		            			<input id="phoneRight" type="text" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>是否连锁店*</p>
+		            			<select id="chainRight" data-field='select' disabled required>
+		            				<option value="1">是</option>
+		            				<option value="2">否</option>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点类型</p>
+		            			<select id="outletTypeRight" data-field='select' name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>人均消费*</p>
+		            			<select id="averageConsumptionRight" data-field='select' disabled required>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6 mulBox">
+		            			<p>竞品信息</p>
+		            			<input type="text" data-field="mulSelect" class="mulInput" id="competitorBrandsRight" disabled required/>
+		            			<ul class="mulItem">
+	                      <li>
+	                      	<label><input type="checkbox" id="1">百威</label>
+	                      </li>
+	                      <li>
+	                        <label><input type="checkbox" id="2">纯生</label>
+	                      </li>
+	                      <li>
+	                        <label><input type="checkbox" id="3">青岛</label>
+	                      </li>
+	                      <li>
+	                        <label><input type="checkbox" id="4">雪花</label>
+	                      </li>
+	                      <li>
+	                        <label><input type="checkbox" id="5">青岛</label>
+	                      </li>
+	                      <a href="javascript:;" class="fa" id="mulSure">OK</a>
+	                    </ul>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>(区块)人流量</p>
+		            			<select id="trafficRight" data-field='select' disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点等级</p>
+		            			<select id="classificationRight" data-field='select' disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点策略</p>
+		            			<select id="outletStrategyRight" data-field='select' disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点合约类型</p>
+		            			<select id="agreementsTypeRight" data-field='select' disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>对象类型*</p>
+		            			<select id="duixiangTypeRight" data-field='select' disabled required>
+		            			</select>
+										</div>
+		            		<div class="col-md-6">
+		            			<p>开关店状态*</p>
+		            			<select id="stateRight" data-field='select' disabled required>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>网点分类</p>
+		            			<select id="classificationRight" data-field='select' disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>拜访频率</p>
+		            			<select id="callFrequencyRight" data-field='select'  disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>SIS代理人代码</p>
+		            			<select id="sisOwnerRight" data-field='select' name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>SIS代理人名称</p>
+		            			<select id="sisNameRight" data-field='select' name="" disabled>
+		            			</select>
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>1p经销商</p>
+		            			<input id="dealer1pRight" data-field='select' type="text" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>1p备用经销商</p>
+		            			<input id="standbyDealer1pRight" data-field='select' type="text" disabled />
+		            		</div>
+		            		<div class="col-md-6">
+		            			<p>2p经销商</p>
+		            			<input id="dealer2pRight" data-field='select' type="text" disabled />
+		            		</div>
+		            		<div class="col-md-12 selectDate">
+		            			<p>最近开店日期</p>
+	                    <div class='input-group date disabled'>
+		                    <input id='createdTimestampRight' type='text' class="form-control" />
+		                    <span class="input-group-addon">
+		                       <span class="glyphicon glyphicon-calendar"></span>
+		                    </span>
+	                    </div>
+		            		</div>
+		            		<div class="col-md-12 selectDate">
+		            			<p>最近关店日期</p>
+		            			<div class='input-group date disabled'>
+		                    <input id='closedTimestampRight' type='text' class="form-control" />
+		                    <span class="input-group-addon">
+		                       <span class="glyphicon glyphicon-calendar"></span>
+		                    </span>
+	                    </div>
+		            		</div>
+		            		<div class="col-md-12 selectDate">
+		            			<p>即将重开日期</p>
+		            			<div class='input-group date disabled'>
+		                    <input id='reopenTimestampRight' type='text' class="form-control" />
+		                    <span class="input-group-addon">
+		                       <span class="glyphicon glyphicon-calendar"></span>
+		                    </span>
+	                    </div>
+		            		</div>
+		            		<!-- <div class="col-md-12 ap-sub">
+		            			<button class="col-md-12 btn btn-default pull-right display-none" id="submit">提交</button>
+		            		</div> -->
+		            		</form>
+	            		</div>
+            		</div>
+            	</div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- modal content -->
+        <!--点击驳回的modal-->  
+	      <div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="rejectModal">
+	        <div class="modal-dialog">
+	          <div class="modal-content">
+	            <div class="modal-header">
+	              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+	              </button>
+	              <h4 class="modal-title" id="myModalLabel2">请输入驳回理由</h4>
+	            </div>
+	            <div class="modal-body">
+	              <textarea id="reText"></textarea>
+	            </div>
+	            <div class="modal-footer">
+	              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+	              <button type="button" class="btn btn-primary" id="rejectBtn">确定</button>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+        <!-- /modal content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="js/common/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="js/common/validate/jquery.validate.min.js"></script>
+    <script src="js/common/validate/messages_zh.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/common/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="js/common/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="js/common/nprogress.js"></script>
+    <script src="js/common/icheck.min.js"></script>
+    <script src="js/common/datepicker/moment.min.js"></script>
+    <script src="js/common/datepicker/daterangepicker.js"></script>
+    <!-- bootstrap-datetimepicker -->    
+    <script src="js/common/datepicker/bootstrap-datetimepicker.min.js"></script>
+    
+    <!-- Custom Theme Scripts -->
+    <script src="js/common/custom.min.js"></script>
+    <script src="js/common/pnotify.js"></script>
+    <script src="js/common/global.js"></script>
+    <script src="js/common/checkAllandPaging.js"></script>
+    <script src="js/outletCommon.js"></script>
+    <script src="js/outletApprove.js"></script>
+  </body>
+</html>

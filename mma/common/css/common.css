@@ -1,0 +1,267 @@
+@charset "utf-8";
+* {
+  box-sizing: border-box;
+  font-size: 20px;
+}
+html,
+p,
+ul {
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style: none;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.disnone {
+  display: none;
+}
+.red {
+  color: red;
+}
+.fleft {
+  float: left;
+}
+.margint15 {
+  margin-top: 15px;
+}
+/*所有页面背景为白色*/
+.page {
+  background: white;
+}
+.toolbar {
+  height: 88px;
+  background: white;
+}
+.button {
+  font-size: 20px;
+  color: black;
+}
+.btn-h50 {
+  height: 50px;
+  line-height: 48px;
+}
+.search-box {
+  width: 100%;
+  height: 100%;
+}
+.searchbar input[type="search"] {
+  font-size: 18px;
+  background-position: 20px center;
+  background-size: 23px 23px;
+  padding-left: 48px;
+}
+.navbar-fixed .page > .searchbar,
+.navbar-fixed > .searchbar,
+.navbar-through .page > .searchbar,
+.navbar-through > .searchbar {
+  top: 55px;
+}
+.navbar-fixed .page > .searchbar ~ .page-content,
+.navbar-fixed > .searchbar ~ .page-content,
+.navbar-through .page > .searchbar ~ .page-content,
+.navbar-through > .searchbar ~ .page-content {
+  padding-top: 60px;
+}
+/*搜索框*/
+.searchbar {
+  /*background: transparent;*/
+  background: white;
+  height: 60px;
+  padding: 0px 20px 0px 8px;
+}
+.bgwhite {
+  background: white;
+}
+.searchbar.searchbar-active .searchbar-cancel {
+  color: black;
+}
+.list-block {
+  margin: 0;
+  padding: 0px 15px;
+}
+.list-block .item-content {
+  height: 60px;
+}
+.navbar-fixed .page-content,
+.navbar-through .page-content {
+  padding-top: 0px;
+}
+/*刷新默认图标*/
+.pull-to-refresh-layer .onlyForOutlet{
+	background: none;
+}
+/*上标签页*/
+.ol-button a {
+  height: 55px;
+  line-height: 53px;
+}
+.marginb15 {
+  margin-bottom: 15px;
+}
+/******************index页面样式开始******************/
+.ws-samestyle {
+  text-align: center;
+}
+.ws-samestyle i {
+  font-size: 70px;
+}
+.ws-samestyle p {
+  font-size: 20px;
+  color: black;
+  margin: 0px;
+}
+.homebar a {
+  text-align: center;
+  font-size: 20px;
+  color: black;
+}
+/******************index页面样式结束******************/
+
+/******************login页面******************/
+.loginbox {
+  margin: 100px auto;
+}
+.loginbox a {
+  margin-top: 50px;
+}
+.inputbox {
+  margin-bottom: 20px;
+}
+.inputbox input {
+  border: 1px solid #bfbfbf;
+  width: 100%;
+  height: 50px;
+  padding: 8px;
+}
+.log-title {
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+.newsOnly .item-content {
+  height: auto;
+  padding-left: 0px;
+}
+
+.notifications .notification-item {
+  padding: 10px;
+}
+
+.notifications .item-title {
+  font-size: 22px;
+}
+
+.notifications .item-text{
+  font-size: 20px;
+}
+
+.notification-item .item-content {
+  height: auto;
+}
+
+/*搜索选项页面*/
+.searchPage{
+	background: #efeff4;
+}
+.searchPage .page-content{
+	background: white;
+}
+.searchPage .searchbar{
+	background: #c9c9ce;
+}
+
+.navbar-through .searchPage > .searchbar, .navbar-through > .searchbar{
+	top: 0px;
+}
+.dealer-select select {
+  display: none;
+}
+
+.searchPage .searchbar-input{
+	height: 40px;
+}
+.searchPage .searchbar-active .searchbar-cancel{
+	margin-left: 15px;
+	font-size: 20px;
+}
+.curTitle h3{
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+.searchPage .item-content{
+	padding-left: 0px;
+}
+.searchPage .list-block ul{
+	height: auto;
+}
+.searchPage .list-block ul:before{
+	width: 0%;
+}
+.searches{
+  width: 0px;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: width 0.5s;
+  -webkit-transition: width 0.5s; /* Safari */
+}
+.searches.inputfocus{
+  width: 160px;
+}
+.searchbar .searchSame{
+  min-width: 50px;
+  margin-left: 25px;
+  color: inherit;
+  font-size: 20px;
+}
+/* **********************消息页面 */
+.news{
+	padding-top: 20px;
+}
+.news .card{
+	margin: 0px;
+	margin-bottom: 20px;
+}
+.news .card-header span{
+	font-style: italic;
+}
+#nomore {
+  display: none;
+  text-align: center;
+  margin: 10px 0px;
+}
+#nomore .content-block-inner {
+  height: 100px;
+}
+#nomore .content-block-inner:after {
+  width: 0%;
+}
+#nomore .content-block-inner:before {
+  width: 0;
+}
+/*无限滚动样式*/
+.infinite-scroll-preloader {
+  margin-top: 10px;
+  text-align: center;
+  height: 100px;
+}
+.infinite-scroll-preloader .preloader {
+  width: 34px;
+  height: 34px;
+}
+#newsTip{
+  display: none;
+}
+.news .notRead{
+	background: #efefef;
+}
+.notRead .card-content-inner{
+	font-weight: bold;
+}
+/* **********************消息页面  end */

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/framework7/1.6.5/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/framework7/1.6.5/css/framework7.ios.colors.min.css">
+    <link rel="stylesheet" href="../common/css/framework7-icons.css" />
+    <link rel="stylesheet" href="../common/fonts/icons/iconfont.css" />
+    <link rel="stylesheet" href="../common/css/common.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+	<div class="views tabs toolbar-through">
+		<div class="view view-main" data-page="home">
+			<div class="pages toolbar-through">
+				<div data-page="home" class="page">
+					<div class="page-content pull-to-refresh-content infinite-scroll">
+						<div class="pull-to-refresh-layer">
+							<div class="preloader"></div>
+							<div class="pull-to-refresh-arrow"></div>
+						</div>
+						<div class="tabs">
+							<div id="message" class="tab news">
+								<div class="list-block" id="newsBox">
+									
+								</div>
+							</div>
+							<div id="workspace" class="tab active">
+								<div class="content-block row">
+									<div class="col-33 ws-samestyle">
+										<a href="mma://outlet" class="external">
+											<i class="iconfont">&#xe607;</i>
+											<p>Outlet管理</p>
+										</a>
+									</div>
+									<div class="col-33 ws-samestyle">
+										<a href="mma://plan" class="external">
+											<i class="iconfont">&#xe653;</i>
+											<p>拜访计划</p>
+										</a>
+									</div>
+									<div class="col-33 ws-samestyle">
+										<a href="mma://survey" class="external">
+											<i class="iconfont">&#xe601;</i>
+											<p>普查信息</p>
+										</a>
+									</div>
+								</div>
+								<div class="content-block row">
+									<div class="col-33 ws-samestyle">
+										<a href="mma://outlet?mode=2p" class="external">
+											<i class="iconfont">&#xe603;</i>
+											<p>2P管理</p>
+										</a>
+									</div>
+								</div>
+							</div>
+							<div id="setting" class="tab">
+								<div class="list-block">
+									<ul>
+										<li class="item-content">
+											<div class="item-inner">
+												<div class="item-title">账户:</div>
+												<div class="item-after" id="userCount">mm</div>
+											</div>
+										</li>
+										<li class="item-content">
+											<div class="item-inner">
+												<div class="item-title">版本号:</div>
+												<div class="item-after" id="appVersion">1.0</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="content-block">
+									<a href="javascript:;" class="button button-fill btn-h50" id="backtologin">退出登录</a>
+								</div>
+							</div>
+						</div>
+						<!--无限滚动-->
+						<div class="content-block" id="nomore">
+							<div class="content-block-inner nomore">我是有底线的</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--标签部分；带有链接-->
+		<div class="toolbar tabbar">
+			<div class="toolbar-inner row homebar">
+				<div class="col-33">
+					<a href="#message" class="tab-link">
+						<i class="icon">chat_fill
+							<span class="badge bg-red" id="newsTip"></span>
+						</i>
+						<span class="tabbar-label">消息</span>
+					</a>
+				</div>
+				<div class="col-33">
+					<a href="#workspace" class="tab-link active">
+						<i class="icon">persons</i>
+						<span class="tabbar-label">工作区</span>
+					</a>
+				</div>
+				<div class="col-33">
+					<a href="#setting" class="tab-link">
+						<i class="icon">gear</i>
+						<span class="tabbar-label">设置</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="https://cdn.bootcss.com/framework7/1.6.5/js/framework7.min.js"></script>
+	<script type="text/javascript" src="js/jsencrypt.min.js"></script>
+	<script type="text/javascript" src="../common/js/common.js"></script>
+	<script type="text/javascript" src="js/home.js"></script>
+</body>
+</html>

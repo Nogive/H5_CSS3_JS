@@ -1,0 +1,76 @@
+{
+	"code":0,
+	"data":{
+		"name":"喜力啤酒",
+		"timestamp":"20180126",
+		"items":[
+			{
+				"id": "WenBen-2", 
+				"name": "网点名称", 
+				"type": "WenBen", 
+				"require": true,
+				"value":"百联"
+			},
+			{
+				"id": "DuoXingWenBen-3", 
+				"name": "网点描述", 
+				"type": "DuoXingWenBen", 
+				"require": true,
+				"value":"这是描述，这是秒速，描述描述秒速"
+			},
+			{
+				"id": "ShuZi-4", 
+				"name": "喜力数量", 
+				"type": "ShuZi", 
+				"require": true,
+				"value":200
+			},
+			{
+				"id": "RiQi-5", 
+				"name": "进货日期", 
+				"type": "RiQi", 
+				"require": true,
+				"value":"20180126"
+			},
+			{
+				"id": "DanXuanKuang-6", 
+				"name": "喜力330ML数量", 
+				"type": "DanXuanKuang", 
+				"require": true,
+				"options":["100-200", "200-300", "300+"],
+				"value":"100-200"
+			},
+			{
+				"id": "DuoXuanKuang-7", 
+				"name": "竞争品牌", 
+				"type": "DuoXuanKuang", 
+				"require": true,
+				"options":["青岛", "雪花", "哈尔滨"],
+				"value":"青岛"
+			},
+			{
+				"id": "MingXi-8", 
+				"name": "喜力铺货", 
+				"type": "MingXi", 
+				"require": true,
+				"details":[
+					{
+						"id": "WenBen-9", 
+						"name": "铺货名称", 
+						"type": "WenBen", 
+						"require": true,
+						"value":"喜力550ML"
+					},
+					{
+						"id": "DanXuanKuang-10", 
+						"name": "铺货数量", 
+						"type": "DanXuanKuang", 
+						"require": true, 
+						"options": ["100-200", "200-300", "300+"],
+						"value":"200-300"
+					}
+				]
+			}
+		]
+	}
+}

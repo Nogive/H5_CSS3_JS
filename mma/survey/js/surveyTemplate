@@ -1,0 +1,145 @@
+{
+	"code":0,
+	"data":{
+		"templateId":1,
+		"name": "清风Club", 
+		"items":[
+			{
+				"id":"WenBen-1513218991487",
+				"name":"酒吧名称",
+				"require":true,
+				"type":"WenBen"
+			},
+			{
+				"id":"DanXuanKuang-1513218991487",
+				"name":"人流量",
+				"require":true,
+				"type":"DanXuanKuang",
+				"options":[
+					{
+						"id":1,
+						"name":"小于100"
+					},
+					{
+						"id":2,
+						"name":"100-200"
+					},
+					{
+						"id":3,
+						"name":"200以上"
+					}
+				]
+			},
+			{
+				"id":"DuoXingWenBen-1513219715710",
+				"name":"备注",
+				"require":true,
+				"type":"DuoXingWenBen"
+			},
+			{
+				"id":"ShuZi-1513219715710",
+				"name":"酒吧连锁数量",
+				"require":true,
+				"type":"ShuZi"
+			},
+			{
+				"id":"RiQi-1513219715711",
+				"name":"合同开始日期",
+				"require":true,
+				"type":"RiQi"
+			},
+			{
+				"id":"DuoXuanKuang-1513219715711",
+				"name":"竞品信息",
+				"require":true,
+				"type":"DuoXuanKuang",
+				"options":[
+					{
+						"id":1,
+						"name":"青岛"
+					},
+					{
+						"id":2,
+						"name":"百威"
+					},
+					{
+						"id":3,
+						"name":"纯生"
+					},
+					{
+						"id":4,
+						"name":"雪花"
+					}
+				]
+			},
+			{
+				"id":"MingXi-4",
+				"name":"这里是明细内容",
+				"require":true,
+				"type":"MingXi",
+				"details":[
+					{
+						"id": "DanXuanKuang-5", 
+						"name": "喜力数量", 
+						"type": "DanXuanKuang", 
+						"require": true, 
+						"options":[
+							{
+								"id":1,
+								"name":"100"
+							},
+							{
+								"id":2,
+								"name":"200"
+							},
+							{
+								"id":3,
+								"name":"300"
+							}
+						]
+					},
+					{
+						"id": "DuoXingWenBen-6", 
+						"name": "选择原因", 
+						"type": "DuoXingWenBen", 
+						"require": true
+					}
+				]
+			},
+			{
+				"id":"MingXi-12",
+				"name":"是另一个明细内容",
+				"require":true,
+				"type":"MingXi",
+				"details":[
+					{
+						"id": "DanXuanKuang-15", 
+						"name": "喜力数量", 
+						"type": "DanXuanKuang", 
+						"require": true, 
+						"options":[
+							{
+								"id":1,
+								"name":"小于100"
+							},
+							{
+								"id":2,
+								"name":"100-200"
+							},
+							{
+								"id":3,
+								"name":"200以上"
+							}
+						]
+					},
+					{
+						"id": "DuoXingWenBen-16", 
+						"name": "数量", 
+						"type": "WenBen", 
+						"require": true
+					}
+				]
+			}
+		]
+	}
+}

@@ -1,0 +1,45 @@
+@charset "utf-8";
+.news{
+	padding-top: 20px;
+}
+.news .card{
+	margin: 0px;
+	margin-bottom: 20px;#fafafa
+}
+.news .notRead{
+	background: #efefef;
+}
+.notRead .card-content-inner{
+	font-weight: bold;
+}
+.news .card-header span{
+	font-style: italic;
+}
+#nomore {
+  display: none;
+  text-align: center;
+  margin: 10px 0px;
+}
+#nomore .content-block-inner {
+  height: 100px;
+}
+#nomore .content-block-inner:after {
+  width: 0%;
+}
+#nomore .content-block-inner:before {
+  width: 0;
+}
+/*无限滚动样式*/
+.infinite-scroll-preloader {
+  margin-top: 10px;
+  text-align: center;
+  height: 100px;
+}
+.infinite-scroll-preloader .preloader {
+  width: 34px;
+  height: 34px;
+}
+#newsTip{
+	display: none;
+}
+

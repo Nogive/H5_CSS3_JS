@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>请登录!</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/nprogress.css" rel="stylesheet">
+    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="css/custom.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css" />
+  </head>
+  <body class="login">
+    <div>
+      <div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form id="loginBox">
+              <h1>登 录</h1>
+              <div class="vStyle">
+                <input id="user" name="userName" type="text" class="form-control" placeholder="Username" required/>
+              </div>
+              <div class="vStyle">
+                <input id="passw" name="password" type="password" class="form-control" placeholder="Password" required/>
+              </div>
+              <div>
+                <a id="goLogin" class="btn btn-default" href="javascript:;">Log in</a>
+                <a class="reset_pass" href="javascript:;">忘记密码?</a>
+              </div>
+              <div class="clearfix"></div>
+              <div class="separator">
+              	<!--
+                <p class="change_link">没有账户?
+                  <a href="#logout" class="to_register">注册 </a>
+                </p>
+               -->
+                <div class="clearfix"></div>
+                <br />
+                <div>
+                  <h1><i class="fa fa-paw"></i> MJP</h1>
+                  <p>©2018 All Rights Reserved.</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+        <div id="register" class="animate form registration_form">
+          <section class="login_content">
+            <form>
+              <h1>注 册</h1>
+              <div>
+                <input type="text" class="form-control" placeholder="Username" required/>
+              </div>
+              <div>
+                <input type="email" class="form-control" placeholder="Email" required/>
+              </div>
+              <div>
+                <input type="password" class="form-control" placeholder="Password" required/>
+              </div>
+              <div>
+                <a class="btn btn-default submit" href="index.html">Submit</a>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">已经有账户 ?
+                  <a href="#signin" class="to_register">直接登录 </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <h1><i class="fa fa-paw"></i> MJP!</h1>
+                  <p>©2018 All Rights Reserved.</p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+    <script src="js/common/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="js/common/jsencrypt.min.js"></script>
+    <script src="js/common/validate/jquery.validate.min.js"></script>
+    <script src="js/common/validate/messages_zh.js"></script>
+    <script src="js/common/bootstrap.min.js"></script>
+    <script src="js/common/global.js"></script>
+    <script src="js/login.js"></script>
+  </body>
+</html>

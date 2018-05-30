@@ -1,0 +1,49 @@
+@charset "utf-8";
+.survey .item-content{
+	padding-left: 0;
+}
+.survey h2{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.shoptitle{
+	padding: 15px;
+	border-bottom: 1px solid #007AFF;
+}
+.shoptitle p{
+	color: #007AFF;
+}
+.surBox h2{
+	margin-top: 10px;
+	margin-bottom: 0px;
+}
+.surBox h3,.surBox p{
+	margin: 0;
+	width: 100%;
+	/*text-align: center;*/
+}
+.surBox .item-content{
+	padding: 0px;
+}
+.surBox .item-inner{
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.surBox .item-inner input{
+	width: 100%;
+	border: 1px solid #BFBFBF;
+	padding: 0px 5px;
+}
+.surBox .item-inner input.border-red{
+	border: 1px solid red;
+}
+.border-red{
+	border: 1px solid red;
+}
+.surBox .item-inner:after{
+	width: 0;
+}
+.mainBox{
+	max-height: 900px;
+	overflow-y: auto;
+}

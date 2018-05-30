@@ -1,0 +1,278 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-size: 20px;
+}
+ul{list-style: none;}
+a{
+	color: #000000;
+	text-decoration: none;
+}
+.iconfont{
+	font-size: 28px;
+}
+.clearfix:after{
+	content:".";
+	display:block;
+	height:0;
+	clear:both;
+	visibility:hidden;
+}
+.disnone{
+	display: none;
+}
+/*绝对定位*/
+.topos{
+	position: absolute;
+	z-index: 999;
+	cursor: pointer;
+}
+.the_date td.border-red{
+	border: 2px solid red;
+}
+.container{
+	width: 100%;
+	height: 100%;
+}
+.main{
+	width: 100%;
+	height: 100%;
+}
+.fleft{
+	float: left;
+}
+.the_calendar{
+	width: 420px;
+}
+.the_date{
+	background: rgb(255,255,237);
+	border-collapse: collapse;
+}
+.the_date td,.the_date th{
+	width: 60px;
+	height: 60px;
+	border: 1px solid rgb(179, 178, 177);
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+}
+.clientlist{
+	width: 346px;
+	height: 100%;
+}
+.clientlist ul{
+	max-height: 880px;
+	overflow-y: auto;
+	background: #f8fcfe;
+}
+.clientlist h2{
+	height: 70px;
+	line-height: 70px;
+	padding-left: 15px;
+	background: rgb(57,183,237);
+	color: white;
+	font-weight: normal;
+	border-bottom: 1px solid #BFBFBF;
+}
+#clientList li,#clientListDetail li{
+	margin-bottom: 5px;
+	padding: 8px 40px 8px 15px;
+	border-bottom: 1px solid #BFBFBF;
+	position: relative;
+}
+.clientlist .clientName{
+	position: relative;
+}
+.isFill{
+	position: absolute;
+	top: 10px;
+    right: 5px;
+    font-size: 30px;
+	color: #ff3b30;
+}
+.clientlist li.topos{
+	width: 346px;
+}
+.clientlist li p{
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.clientlist .cliAddr{
+	font-size: 14px;
+	margin-top: 3px;
+}
+.clientlist .cliBdge{
+	display: inline-block;
+    width: 20px;
+    height: 20px;
+    color: #1c1d1f;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 17px;
+    margin-right: 8px;
+    font-size: 16px;
+    vertical-align: text-bottom;
+    font-weight: bold;
+    border: 1px solid #1c1d1f;
+}
+/*.modal{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.4);
+	top: 0px;
+	z-index: 999;
+}*/
+.c_list{
+	width: 346px;
+	background: #FFFFFF;
+	position: absolute;
+	bottom: 0px;
+	height: 570px;
+	border-top: 1px solid #BFBFBF;
+}
+.c_list ul{
+	max-height: 520px;
+	overflow-y: auto;
+	padding: 0px 15px 10px;
+}
+.c_list h2{
+	margin: 5px 0px;
+	padding: 10px 15px;
+}
+.c_list h2,.c_list h2 span{
+	font-size: 16px;
+}
+#currentDate{
+	margin-right: 10px;
+}
+a.cancleModel{
+	position: absolute;
+    color: #1b1b1b;
+    font-weight: bold;
+    top: 6px;
+    right: 8px;
+    font-size: 30px;
+}
+.c_list li{
+	border-bottom: 1px solid #BFBFBF;
+	padding: 8px 5px 8px 0px;
+	position: relative;
+}
+.c_list li a{
+	display: block;
+  	padding-right: 25px;
+}
+.c_list li i{
+	float: right;
+	color: #007AFF;
+	position: absolute;
+	top: 3px;
+	right: 0px;
+}
+/*几种颜色*/
+.bg_default{
+	background:#f4fafc;
+}
+.bg_red{
+	background: inherit;
+}
+.validcolor{
+	background: rgb(254,247,231);
+}
+.bg_orange{
+	background: #ff9500;
+}
+.bg_green{
+	background: #4cd964;
+}
+.col_red{
+	color: #ff3b30;
+}
+.col_orange{
+	color: #ff9500;
+}
+.col_green{
+	color: #4cd964;
+}
+.preMove{
+	background: rgb(57,183,237);
+	color: white;
+}
+.today{
+	background: rgb(57,183,237);
+	color: white;
+	font-size: 18px;
+}
+/*按钮组*/
+.recompute{
+	background: rgb(57,183,237);
+	width: 100%;
+	height: 70px;	
+}
+.recompute p{
+	color: white;
+	height: 35px;
+	line-height: 35px;
+	font-size: 18px;
+	padding-left: 20px;
+	border-bottom: 1px solid #BFBFBF;
+}
+.local{
+	width: 99.5%;
+	height: 520px;
+}
+iframe{
+	width: 100%;
+	height: 100%;
+}
+/*marker文字内容框*/
+.amap-marker-label {
+	font-size: 13px;
+	border: 1px solid orange;
+	background: #fff;
+	border-radius: 10px 0 0 0;
+	color: #690441;
+}
+.navBtn{
+	position: relative;
+}
+.navBtn button{
+	position: absolute;
+    background: white;
+    border: none;
+    border-radius: 5px;
+    top: 18px;
+    width: 80px;
+    height: 35px;
+}
+.navBtn .clear{
+	right: 110px;
+}
+.navBtn .label{
+	right: 10px;
+}
+.rejectbox{
+	resize: none;
+	height: 100px;
+	padding: 8px;
+	width: 100%;
+}
+.planOnly .item-title{
+	padding-right: 15px;
+}
+/*无限滚动样式*/
+.infinite-scroll-preloader {
+  margin-top: 10px;
+  text-align: center;
+  height: 100px;
+}
+.infinite-scroll-preloader .preloader {
+  width:34px;
+  height:34px;
+} 
+.martop0{
+	margin-top: 0px;
+}

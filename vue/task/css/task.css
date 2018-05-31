@@ -25,9 +25,6 @@ a{
   border-top: none;
   padding: 5px 15px;
 }
-.btn:hover{
-  background: gainsboro;
-}
 .tip{
   padding-top: 5px;
   display: inline-block;
@@ -55,4 +52,20 @@ ul li i{
   float: right;
   font-size: 18px;
   cursor: pointer;
+}
+.editing *{
+  display: none;
+}
+.editing input[type=text]{
+  display: initial;
+  margin-left: 25px;
+  width:calc(100% - 25px);
+}
+li input[type=text]{
+  display: none;
+}
+.current{
+  background: #19ef19;
+  color: white;
+  border: 1px solid #19ef19;
 }

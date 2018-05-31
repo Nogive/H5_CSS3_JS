@@ -675,3 +675,10 @@ ul.sysCords li{
     padding-bottom: 10px;
     text-align: center;
 }
+.forLeft{
+	padding-top: 10px;
+	padding-bottom: 30px;
+}
+.forLeft button{
+	width: 50%;
+}

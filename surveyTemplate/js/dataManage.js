@@ -23,6 +23,11 @@ $('#asyncPlan').click(function(){
       synchronizePlan(timestamp);
     }
 });
+$('.forLeft button').click(function(){
+    let name=$(this).attr('name');
+    let title=getTitle(title);
+    openPromptModal(title);
+  });
 //基础数据同步
 	$('#basicBtn button').click(function(){
 		let name=$(this).attr('name');
@@ -152,4 +157,16 @@ function synchronizeData(name){
       failResponse(xhr);
     }
   });
+}
+function getTitle(name) {
+  let title;
+  switch (name) {
+    case "employee":
+      title = "人员及汇报关系同步";
+      break;
+    case "outlet":
+      title = "网点信息同步";
+      break;
+  }
+  return title;
 }

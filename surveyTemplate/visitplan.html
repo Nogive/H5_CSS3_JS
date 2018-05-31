@@ -161,24 +161,26 @@
         <div class="right_col" role="main">
           <div class="">
             <div class="clearfix"></div>
-            <div class="row forBasic" id="basicBtn">
-              <p>点击以下按钮进行同步<p>
-              <div class="col-md-3"><button class="btn btn-info" name="employee">人员同步</button></div>
-              <div class="col-md-3"><button class="btn btn-info" name="1p">1P同步</button></div>
-              <div class="col-md-3"><button class="btn btn-info" name="cityCode">citycode同步</button></div>
-              <!--<div class="col-md-3"><button class="btn btn-info">按钮4</button></div>
-              <div class="col-md-3"><button class="btn btn-info">按钮5</button></div>
-              <div class="col-md-3"><button class="btn btn-info">按钮6</button></div>
-              <div class="col-md-3"><button class="btn btn-info">按钮7</button></div>
-              <div class="col-md-3"><button class="btn btn-info">按钮8</button></div>
-              <div class="col-md-3"><button class="btn btn-info">按钮9</button></div>
-              <div class="col-md-3"><button class="btn btn-info">按钮10</button></div>
-              <div class="col-md-3"><button class="btn btn-info">按钮11</button></div>
-              <div class="col-md-3"><button class="btn btn-info">按钮12</button></div>
-              <div class="col-md-3"><button class="btn btn-info">按钮13</button></div>
-              <div class="col-md-3"><button class="btn btn-info">按钮14</button></div>
-              <div class="col-md-3"><button class="btn btn-info">按钮15</button></div>
-              <div class="col-md-3"><button class="btn btn-info">按钮16</button></div>-->
+            <div class="row">
+            	<div class="forLeft clearfix">
+            		 <div class="col-md-3"><button class="btn btn-info" name="employee">人员及汇报关系同步</button></div>
+            	</div>
+            	<div class="forLeft clearfix">
+            		 <div class="col-md-3"><button class="btn btn-info" name="outlet">网点信息同步</button></div>
+            	</div>
+              <div class="col-md-12 planonly">
+                <div class="form-group col-md-4">
+                  <p>选择月份 <span class="tip">*</span></p>
+                  <div class="input-group date col-md-12" data-link-field="monthOfplan">
+                    <input class="form-control" size="16" placeholder="点击选择月份" type="text" value="" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon glyphicon-calendar"></span></span>
+                  </div>
+                  <input type="hidden" id="monthOfplan" value="" /><br/>
+                </div>
+                <div class="col-md-4 marT28">
+                  <button class="btn btn-info" id="asyncPlan">拜访计划同步</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

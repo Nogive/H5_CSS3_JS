@@ -25,12 +25,21 @@ $('#asyncPlan').click(function(){
 });
 //基础数据同步
 	$('#basicBtn button').click(function(){
-		let name=$(this).text();
+		let name=$(this).attr('name');
+		let title;
+		if(name=='employee'){
+			title="人员同步";
+		}else if(name=='1p'){
+			title="1P同步";
+		}else{
+			title="citycode同步";
+		}
 		let obj={
-			title:name+'被点击了',
+			title:title,
 			msg:'同步'+name+'的内容'
 		}
 		openPromptModal(obj);
+		synchronizeData(name);
 	});
 //网点数据上传
   $("#inputfile").change(function() {
@@ -119,4 +128,28 @@ function openPromptModal(obj){
 	$('#asyncTitle').text(obj.title);
 	$('#asyncMsg').text(obj.msg);
 	$('#asyncModal').modal({backdrop:'static'});
+}
+function synchronizeData(name){
+	$.ajax({
+    url: tempUrl,
+    type: "GET",
+    data: {dataType:name},
+    beforeSend: function(xhr) {
+      xhr.setRequestHeader("Authorization", cookie.getCookie("token"));
+    },
+    success: function(data) {
+      if (data == undefined) {
+        noData();
+      } else if (data.code == $g.API_CODE.OK) {
+        //showNotify('success','成功','同步请求提交成功');
+      } else {
+        codeError(data, "同步拜访计划");
+      }
+      $('#asyncModal').modal('hide');
+    },
+    error: function(xhr) {
+      $('#asyncModal').modal('hide');
+      failResponse(xhr);
+    }
+  });
 }

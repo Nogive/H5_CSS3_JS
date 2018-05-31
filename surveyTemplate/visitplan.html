@@ -161,20 +161,24 @@
         <div class="right_col" role="main">
           <div class="">
             <div class="clearfix"></div>
-            <div class="row">
-							<div class="col-md-12 planonly">
-	              <div class="form-group col-md-4">
-	                <p>选择月份 <span class="tip">*</span></p>
-	                <div class="input-group date col-md-12" data-link-field="monthOfplan">
-	                  <input class="form-control" size="16" placeholder="点击选择月份" type="text" value="" readonly>
-	                  <span class="input-group-addon"><span class="glyphicon glyphicon glyphicon-calendar"></span></span>
-	                </div>
-	                <input type="hidden" id="monthOfplan" value="" /><br/>
-	              </div>
-	              <div class="col-md-4 marT28">
-	                <button class="btn btn-default" id="asyncPlan">同步</button>
-	              </div>
-	            </div>
+            <div class="row forBasic" id="basicBtn">
+              <p>点击以下按钮进行同步<p>
+              <div class="col-md-3"><button class="btn btn-info" name="employee">人员同步</button></div>
+              <div class="col-md-3"><button class="btn btn-info" name="1p">1P同步</button></div>
+              <div class="col-md-3"><button class="btn btn-info" name="cityCode">citycode同步</button></div>
+              <!--<div class="col-md-3"><button class="btn btn-info">按钮4</button></div>
+              <div class="col-md-3"><button class="btn btn-info">按钮5</button></div>
+              <div class="col-md-3"><button class="btn btn-info">按钮6</button></div>
+              <div class="col-md-3"><button class="btn btn-info">按钮7</button></div>
+              <div class="col-md-3"><button class="btn btn-info">按钮8</button></div>
+              <div class="col-md-3"><button class="btn btn-info">按钮9</button></div>
+              <div class="col-md-3"><button class="btn btn-info">按钮10</button></div>
+              <div class="col-md-3"><button class="btn btn-info">按钮11</button></div>
+              <div class="col-md-3"><button class="btn btn-info">按钮12</button></div>
+              <div class="col-md-3"><button class="btn btn-info">按钮13</button></div>
+              <div class="col-md-3"><button class="btn btn-info">按钮14</button></div>
+              <div class="col-md-3"><button class="btn btn-info">按钮15</button></div>
+              <div class="col-md-3"><button class="btn btn-info">按钮16</button></div>-->
             </div>
           </div>
         </div>
@@ -184,17 +188,15 @@
 					<div class="modal-dialog modal-md">
 						<div class="modal-content">
 							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-								</button>
 								<h4 class="modal-title" id="asyncTitle"></h4>
 							</div>
 							<div class="modal-body loadingBody">
-								<p class="text-center" id="asyncMsg"></p>
-								<p class="text-center">请前往 “异步任务” 查看详细</p>
-							</div>
-							<div class="modal-footer">
-								<a class="btn btn-default" href="asyncTask">前往异步任务</a>
-								<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+								<p class="text-center">正在提交同步请求，请稍候...</p>
+								<div class="loading">
+									<span class="fa fa-spinner fa-spin">
+										
+									</span>
+								</div>
 							</div>
 						</div>
 					</div>

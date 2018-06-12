@@ -9,13 +9,26 @@ var staffKey = ""; //search old  key
 var loadAll = false;
 var res = {
   noUser: '<tr><td colspan="5"><b>暂无记录</b></td></tr>',
-  noStaff: "<li><p>暂无记录，请联系管理员。</p></li>",
+  noStaff: "<li><p>暂无记录。</p></li>",
   loadMoreUser:
     '<a id="loadMore" href="javascript:;" class="btn btn-default">加载更多...</a>',
   loadMoreSatff: '<a id="loadMoreStaff" href="javascript:;">加载更多...</a>'
 };
+var selectAccount;
 $(document).ready(function() {
+  //suit table height
+  let tableHeight =
+    $(".right_col").height() -
+    $(".accIndic").offset().top -
+    $(".pageAndbtn ").height() -
+    30;
+  $(".accIndic").css("height", tableHeight);
+  let trH = $(".headings").height();
+  size = Math.floor(tableHeight / trH);
+
   questAccountList();
+	questAreaTree();
+	
   //loadmore user
   $("#moreUser").on("click", "#loadMore", function() {
     loadMoreUser();
@@ -24,6 +37,12 @@ $(document).ready(function() {
   $("#goSearch").click(function() {
     let searchText = $("#searchUser").val();
     searchUserInCurrent(searchText);
+  });
+  $("#searchUser").on("keypress", function(event) {
+    if (event.keyCode === 13) {
+      let searchText = $("#searchUser").val();
+      searchUserInCurrent(searchText);
+    }
   });
   /*添加账户按钮******************************************************************/
   $("#addBySource").click(function() {
@@ -80,6 +99,12 @@ $(document).ready(function() {
     let search = $("#searchText").val();
     searchAccount(search);
   });
+  $("#searchText").on("keypress", function(event) {
+    if (event.keyCode === 13) {
+      let searchText = $("#searchText").val();
+      searchAccount(searchText);
+    }
+  });
   //loadmore staff
   $("#more").on("click", "#loadMoreStaff", function() {
     loadMoreSatff();
@@ -93,22 +118,65 @@ $(document).ready(function() {
         .attr("id")
         .substring(4)
     );
-    let param = [id];
+    //let param = [id];
+    selectAccount = [id];
     let inactive = userMap[id].inactive;
-    handleAccount(param, inactive);
+    let msg = inactive ? "是否执行开启账户的操作？" : "是否执行关闭账户的操作";
+    opts.tip(msg, inactive, "");
   });
   //multi close or open
   $("#closeAccount").click(function() {
-    let parames = checkSatisfaction(false);
-    if (parames.length > 0) {
-      handleAccount(parames, false);
+    selectAccount = checkSatisfaction(false);
+    if (selectAccount.length > 0) {
+      opts.tip("是否执行批量关闭账户的操作？", false, "");
     }
   });
   $("#openAccount").click(function() {
-    let parames = checkSatisfaction(true);
-    if (parames.length > 0) {
-      handleAccount(parames, true);
+    selectAccount = checkSatisfaction(true);
+    if (selectAccount.length > 0) {
+      opts.tip("是否执行批量开启账户的操作？", true, "");
     }
+  });
+  $("#accountBox").on("click", ".delete", function() {
+    let id = parseInt(
+      $(this)
+        .parents("tr")
+        .attr("id")
+        .substring(4)
+    );
+    let msg = "是否执行删除账户的操作？";
+    opts.tip(msg, "delete", id);
+  });
+  $("#accountBox").on("click", ".changeProvinces", function() {
+    let id = parseInt(
+      $(this)
+        .parents("tr")
+        .attr("id")
+        .substring(4)
+    );
+    $('#areaModal').modal({backdrop:'static'}).attr('accountId',id)
+  });
+  $('#areaModal').on('show.bs.modal',function(){
+  	let areaTree = $.fn.zTree.getZTreeObj('mjpArea');
+  	tree.raseTree(areaTree);
+		let pNodes = areaTree.getNodesByParam("pId", null);
+		pNodes.forEach(function(e){
+			areaTree.setChkDisabled(e,true,false,false);
+		})
+  });
+  $('#districtBtn').click(function(){
+  	let accountId=$(this).parents('.modal').attr('accountId');
+  	let areaTree = $.fn.zTree.getZTreeObj('mjpArea');
+  	let nodes=areaTree.getCheckedNodes();
+  	if(nodes.length>0){
+  		let params={
+  			id:accountId,
+  			regionId:nodes[0].id
+  		}
+  		editProvinces(params);
+  	}else{
+  		opts.alert('请勾选要更改的城市');
+  	}
   });
   /*效果部分*********************************************************************/
   //全选
@@ -145,14 +213,106 @@ $(document).ready(function() {
       .text("")
       .removeClass("required");
   });
-  //suit table height
-  let tableHeight =
-    $(".right_col").height() -
-    $(".accIndic").offset().top -
-    $(".pageAndbtn ").height() -
-    30;
-  $(".accIndic").css("height", tableHeight);
 });
+
+
+//地区树
+  var areaSetting = {
+	  edit: {
+	    enable: false
+	  },
+	  data: {
+	    simpleData: {
+	      enable: true //使用简单模式
+	    }
+	  },
+	  check: {
+	    enable: true, //节点上是否显示选中框
+	    chkStyle: "checkbox"
+	  },
+	  callback: {
+	    beforeClick: function(treeId, treeNode) {
+	      return false;
+	    },
+	    beforeCheck: function(treeId, treeNode) {
+	      clickOneNode(treeId, treeNode);
+	    }
+	  }
+	};
+  //请求省市区树
+  function questAreaTree(){
+  	$.ajax({
+      url: $g.API_URL.REGION_PROVINCE_CITY.compose(host),
+      type: "GET",
+      beforeSend: function(xhr) {
+        xhr.setRequestHeader("Authorization", cookie.getCookie("token"));
+      },
+      success: function(data) {
+        if (data == undefined) {
+          noData("无法从服务器获取省市区数据");
+        } else if (data.code == $g.API_CODE.OK) {
+          $.fn.zTree.init($("#mjpArea"), areaSetting, data.data);
+  				var areaTree = $.fn.zTree.getZTreeObj("mjpArea");
+        } else {
+          codeError(data, "加载省市区");
+        }
+      },
+      error: function(xhr) {
+        failResponse(xhr);
+      }
+    });
+  }
+  function clickOneNode(treeId, treeNode) {
+  	let areaTree = $.fn.zTree.getZTreeObj(treeId);
+		var roots = areaTree.getNodesByParam("pId", null);
+		roots.forEach(function(e){
+			if(e.id==treeNode.pId){
+				let brothers=e.children;
+				brothers.forEach(function(b){
+					if(b.id!=treeNode.id){
+						if(treeNode.checked){
+							areaTree.setChkDisabled(b,false,false,false);
+						}else{
+							areaTree.setChkDisabled(b,true,true,false);
+						}
+					}
+				})
+			}else{
+				if(treeNode.checked){//取消
+					areaTree.setChkDisabled(e,false,false,true);
+					areaTree.setChkDisabled(e,true,false,false);
+				}else{
+					areaTree.setChkDisabled(e,true,false,true);
+				}
+				
+			}
+		})
+  }
+  
+  function editProvinces(params){
+  	$('#areaModal').modal('hide');
+  	opts.showLoading();
+	  $.ajax({
+	    type: "GET",
+	    url: $g.API_URL.EMPLOYEE_RETRIEVAL.compose(host),
+	    data: params,
+	    success: function(data) {
+	      if (data == undefined) {
+	        noData();
+	      } else if (data.code == $g.API_CODE.OK) {
+	      	console.log(data.data);
+	        showNotify('success','成功','更改省市区成功')
+	      } else {
+	        codeError(data, "更改省市区");
+	      }
+	      opts.hideLoading();
+	    },
+	    error: function(xhr) {
+	      opts.hideLoading();
+	      failResponse(xhr);
+	    }
+	  });
+  }
 /*页面请求******************************************************************/
 //获取当前账号
 function questAccountList() {
@@ -162,16 +322,23 @@ function questAccountList() {
     url: $g.API_URL.EMPLOYEE_RETRIEVAL.compose(host),
     data: { pageSize: size },
     success: function(data) {
-      if (data.code == $g.API_CODE.OK) {
-        let html = showAccount(data.data);
-        $("#accountBox").html(html);
-        opts.hideLoading();
+      opts.hideLoading();
+      if (data == undefined) {
+        noData();
+      } else if (data.code == $g.API_CODE.OK) {
+        if (data.data == undefined || data.data.length == 0) {
+          noDetailData();
+        } else {
+          let html = showAccount(data.data);
+          $("#accountBox").html(html);
+        }
       } else {
-        codeError(data, "加载账户列表出错");
+        codeError(data, "加载账户列表");
       }
     },
     error: function(xhr) {
-      failResponse(xhr, "加载账户列表失败。");
+      opts.hideLoading();
+      failResponse(xhr);
     }
   });
 }
@@ -180,6 +347,7 @@ function showAccount(obj) {
   userNextPageSign = obj.nextPageSign; //下一页的pageSign
   if (obj.total == 0) {
     html = res.noUser;
+    $("#moreUser").html("");
   } else {
     let records = obj.records; //返回的记录数组
     saveToMap(records, userMap);
@@ -201,6 +369,7 @@ function generateUserList(arr) {
     let jedAddress =
       e.jedAddress == undefined || e.jedAddress == "" ? "暂无" : e.jedAddress;
     let ldapId = e.ldapId == undefined ? "" : e.ldapId;
+    let provinces=e.provinces==undefined?'暂无':e.provinces;
     html +=
       '<tr class="idElem ' +
       bgColor +
@@ -225,6 +394,9 @@ function generateUserList(arr) {
       jedAddress +
       "</td>" +
       "<td>" +
+      provinces +
+      "</td>" +
+      "<td>" +
       btn +
       "</td>" +
       "</tr>";
@@ -239,17 +411,20 @@ function searchUserInCurrent(text) {
     url: $g.API_URL.EMPLOYEE_RETRIEVAL.compose(host),
     data: { pageSize: size, q: text },
     success: function(data) {
-      if (data.code == $g.API_CODE.OK) {
+      opts.hideLoading();
+      if (data == undefined) {
+        noData();
+      } else if (data.code == $g.API_CODE.OK) {
         let html = showAccount(data.data);
         $("#accountBox").html(html);
         userKey = text;
-        opts.hideLoading();
       } else {
-        codeError(data, "加载账户列表出错");
+        codeError(data, "搜索账户");
       }
     },
     error: function(xhr) {
-      failResponse(xhr, "加载账户列表失败。");
+      opts.hideLoading();
+      failResponse(xhr);
     }
   });
 }
@@ -266,16 +441,64 @@ function loadMoreUser() {
     url: $g.API_URL.EMPLOYEE_RETRIEVAL.compose(host),
     data: searchData,
     success: function(data) {
-      if (data.code == $g.API_CODE.OK) {
-        let html = showAccount(data.data);
-        $("#accountBox").append(html);
-        opts.hideLoading();
+      if (data == undefined) {
+        noData();
+      } else if (data.code == $g.API_CODE.OK) {
+        if (data.data == undefined) {
+          noDetailData();
+        } else {
+          let html = showAccount(data.data);
+          $("#accountBox").append(html);
+        }
       } else {
-        codeError(data, "加载更多出错了");
+        codeError(data, "加载更多");
       }
+      opts.hideLoading();
     },
     error: function(xhr) {
-      failResponse(xhr, "加载更多失败了");
+      opts.hideLoading();
+      failResponse(xhr);
+    }
+  });
+}
+function questWhich(action, param) {
+  if (action == "delete") {
+    deleteAccount(param);
+  } else {
+    var inactive = action == "true" ? true : false;
+    handleAccount(selectAccount, inactive);
+  }
+}
+//delete account
+function deleteAccount(param) {
+  opts.showLoading();
+  var data = new FormData();
+  data.append("employeeId", param);
+  $.ajax({
+    url: $g.API_URL.EMPLOYEE_REMOVING.compose(host),
+    type: "DELETE",
+    data: data,
+    processData: false,
+    contentType: false,
+    mimeType: "multipart/form-data",
+    success: function(data) {
+      if (data == undefined) {
+        noData();
+      } else if (data.code == $g.API_CODE.OK) {
+        let employeeId = data.data;
+        userMap[employeeId] = undefined;
+        $("#acc_" + employeeId).remove();
+        showNotify("success", "成功", "删除账号成功");
+      } else if (data.code == $g.API_CODE.USER_HAS_STAFFS) {
+        showNotify("info", "失败", "该账户仍绑定着职位，不允许删除");
+      } else {
+        codeError(data, "删除账户");
+      }
+      opts.hideLoading();
+    },
+    error: function(xhr) {
+      opts.hideLoading();
+      failResponse(xhr);
     }
   });
 }
@@ -298,8 +521,9 @@ function handleAccount(params, inactive) {
     contentType: false,
     mimeType: "multipart/form-data",
     success: function(data) {
-      console.log(data);
-      if (data.code == $g.API_CODE.OK) {
+      if (data == undefined) {
+        noData();
+      } else if (data.code == $g.API_CODE.OK) {
         let employs = data.data.succeed;
         let currentInactive = !inactive;
         let option = getCurrentOption(currentInactive);
@@ -315,10 +539,14 @@ function handleAccount(params, inactive) {
           .children()
           .removeClass("checked");
         $(".fromCurrent").removeClass("checked");
-        opts.hideLoading();
       } else {
-        codeError(data, "操作账户出错了");
+        codeError(data, "操作账户");
       }
+      opts.hideLoading();
+    },
+    error: function(xhr) {
+      opts.hideLoading();
+      failResponse(xhr);
     }
   });
 }
@@ -327,10 +555,10 @@ function getCurrentOption(currentInactive) {
   let html = "";
   if (currentInactive) {
     html =
-      '<a href="javascript:;" class="turn"><i class="fa fa-check-circle"></i>开启</a>';
+      '<a href="javascript:;" class="turn">开启</a><a href="javascript:;" class="delete">删除</a><a href="javascript:;" class="changeProvinces">更改省市区</a>';
   } else {
     html =
-      '<a href="javascript:;" class="turn"><i class="fa fa-times-circle">关闭</i></a>';
+      '<a href="javascript:;" class="turn">关闭</a><a href="javascript:;" class="delete">删除</a><a href="javascript:;" class="changeProvinces">更改省市区</a>';
   }
   return html;
 }
@@ -361,16 +589,18 @@ function questSystemAccount() {
     url: $g.API_URL.EMPLOYEE_ACCOUNT_RETRIEVAL.compose(host),
     data: { pageSize: size },
     success: function(data) {
-      if (data.code == $g.API_CODE.OK) {
+      if (data == undefined) {
+        noData();
+      } else if (data.code == $g.API_CODE.OK) {
         let html = showStaff(data.data);
         $("#oldSystem").html(html);
         $("#systemModal").modal({ backdrop: "static" });
       } else {
-        codeError(data, "获取原系统账户出错");
+        codeError(data, "获取原系统账户");
       }
     },
     error: function(xhr) {
-      failResponse(xhr, "获取原系统账户列表失败");
+      failResponse(xhr);
     }
   });
 }
@@ -379,6 +609,7 @@ function showStaff(obj) {
   staffNextPageSign = obj.nextPageSign;
   if (obj.total == 0) {
     html = res.noStaff;
+    $("#more").html("");
   } else {
     let records = obj.records;
     let loadBtn = "";
@@ -388,8 +619,8 @@ function showStaff(obj) {
     }
     $("#more").html(loadBtn);
     html = generateStaffList(records);
-    return html;
   }
+  return html;
 }
 function generateStaffList(records) {
   let html = "";
@@ -423,17 +654,20 @@ function searchAccount(key) {
     url: $g.API_URL.EMPLOYEE_ACCOUNT_RETRIEVAL.compose(host),
     data: { pageSize: size, q: key },
     success: function(data) {
-      if (data.code == $g.API_CODE.OK) {
+      if (data == undefined) {
+        noData();
+      } else if (data.code == $g.API_CODE.OK) {
         let html = showStaff(data.data);
         $("#oldSystem").html(html);
         staffKey = key;
-        opts.hideLoading();
       } else {
-        codeError(data, "搜索出错");
+        codeError(data, "搜索");
       }
+      opts.hideLoading();
     },
     error: function(xhr) {
-      failResponse(xhr, "搜索账号失败");
+      opts.hideLoading();
+      failResponse(xhr);
     }
   });
 }
@@ -450,16 +684,19 @@ function loadMoreSatff() {
     url: $g.API_URL.EMPLOYEE_ACCOUNT_RETRIEVAL.compose(host),
     data: searchData,
     success: function(data) {
-      if (data.code == $g.API_CODE.OK) {
+      if (data == undefined) {
+        noData();
+      } else if (data.code == $g.API_CODE.OK) {
         let html = showStaff(data.data);
         $("#oldSystem").append(html);
-        opts.hideLoading();
       } else {
-        codeError(data, "加载更多出错了");
+        codeError(data, "加载更多");
       }
+      opts.hideLoading();
     },
     error: function(xhr) {
-      failResponse(xhr, "加载更多失败了");
+      opts.hideLoading();
+      failResponse(xhr);
     }
   });
 }
@@ -481,16 +718,19 @@ function importFormStaff(params) {
     contentType: false,
     mimeType: "multipart/form-data",
     success: function(data) {
-      console.log(data);
-      if (data.code == $g.API_CODE.OK) {
+      if (data == undefined) {
+        noData();
+      } else if (data.code == $g.API_CODE.OK) {
         showNotify("success", "成功啦", "账号导入成功");
         questAccountList();
       } else {
-        codeError(data, "导入账户出错了");
+        codeError(data, "导入账户");
       }
+      opts.hideLoading();
     },
     error: function(xhr) {
-      failResponse(xhr, "导入账户失败了");
+      opts.hideLoading();
+      failResponse(xhr);
     }
   });
 }
@@ -587,16 +827,19 @@ function addVirtureAccount() {
     contentType: false,
     mimeType: "multipart/form-data",
     success: function(data) {
-      console.log(data);
-      if (data.code == $g.API_CODE.OK) {
+      if (data == undefined) {
+        noData();
+      } else if (data.code == $g.API_CODE.OK) {
         questAccountList();
         showNotify("success", "成功啦", "新增虚拟账号成功");
       } else {
-        codeError(data, "新增虚拟账号出错了");
+        codeError(data, "新增虚拟账号");
       }
+      opts.hideLoading();
     },
     error: function(xhr) {
-      failResponse(xhr, "新增虚拟账号失败了");
+      opts.hideLoading();
+      failResponse(xhr);
     }
   });
 }

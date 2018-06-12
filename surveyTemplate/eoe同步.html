@@ -12,7 +12,6 @@
     <link href="css/custom.min.css" rel="stylesheet">
     <link href="css/iCheck/skins/flat/green.css" rel="stylesheet">
     <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="css/zTree/css/zTreeStyle/zTreeStyle.css" />
     <link href="css/common.css" rel="stylesheet">
   </head>
 
@@ -161,57 +160,27 @@
         <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
-            <div class="row accountPage">
-            	<div class="col-md-6 optBtn clearfix">
-	             	<button class="btn btn-default" id="addBySource">从原系统添加</button>
-	              <button class="btn btn-default" id="addVirtual">添加虚拟账号</button>
-							</div>
-							<div class="col-md-6 form-group optBtn">
-								<div class="input-group">
-									<input type="text" class="form-control" placeholder="输入关键字搜索" id="searchUser">
-									<span class="input-group-btn">
-										<button class="btn btn-default" type="button" id="goSearch">搜索</button>
-									</span>
-								</div>
-							</div>
-	          	<div class="clearfix"></div>
-              <div class="ln_solid"></div>
-	            <div class="col-md-12">
-								<div class="tableHead marb0">
-									<table class="table table-striped jambo_table">
-										<thead>
-											<tr class="headings">
-												<th class="onlylabel">勾选</th>
-												<th class="column-title">姓名</th>
-												<th class="column-title">账户</th>
-												<th class="column-title">employeeId</th>
-												<th class="column-title">jde地址</th>
-												<th class="column-title">省市区</th>
-												<th class="column-title">操作</th>
-											</tr>
-										</thead>
-									</table>
-								</div>
-              	<div class="tableHead accIndic">
-              		<table class="table table-striped jambo_table">
-										<tbody id="accountBox" class="recordBox">
-									
-										</tbody>
-		              </table>
-              	</div>
-	              <div class="pageAndbtn clearfix moreIndictor">
-									<div class="col-md-12 loadMore" id="moreUser"></div>
-									<div class="checkOnly" id="optBox">
-										<a href='javascript:;' id="checkAll" data-check="false">
-											<div class="icheckbox_flat-green seAll" style="position: relative;">
-												<ins class="iCheck-helper"></ins>
-											</div>全选 
-										</a>
-										<button id="closeAccount" class="btn btn-default">关闭账号</button>
-										<button id="openAccount" class="btn btn-default">开启账号</button>
-									</div>
-	              </div>
-	            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+            	<div class="forLeft clearfix">
+            		 <div class="col-md-3"><button class="btn btn-info" name="employee">人员及汇报关系同步</button></div>
+            	</div>
+            	<div class="forLeft clearfix">
+            		 <div class="col-md-3"><button class="btn btn-info" name="outlet">网点信息同步</button></div>
+            	</div>
+              <div class="col-md-12 planonly">
+                <div class="form-group col-md-4">
+                  <p>选择月份 <span class="tip">*</span></p>
+                  <div class="input-group date col-md-12" data-link-field="monthOfplan">
+                    <input class="form-control" size="16" placeholder="点击选择月份" type="text" value="" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon glyphicon-calendar"></span></span>
+                  </div>
+                  <input type="hidden" id="monthOfplan" value="" /><br/>
+                </div>
+                <div class="col-md-4 marT28">
+                  <button class="btn btn-info" id="asyncPlan">拜访计划同步</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -230,24 +199,6 @@
 										
 									</span>
 								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" id="areaModal">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close cancleBtn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
-								</button>
-								<h4 class="modal-title">请勾选地区</h4>
-							</div>
-							<div class="modal-body treeMaxH">
-								<ul id="mjpArea" class="ztree"></ul>
-							</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default cancleBtn" data-dismiss="modal">取消</button>
-								<button type="button" class="btn btn-primary" id="districtBtn">确定</button>
 							</div>
 						</div>
 					</div>
@@ -280,7 +231,6 @@
     <script src="js/common/global.js"></script>
     <script type="text/javascript" src="js/common/dataPicker/bootstrap-datetimepicker.js" charset="UTF-8"></script>
     <script type="text/javascript" src="js/common/dataPicker/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
-    <script src="js/common/zTree/js/jquery.ztree.all.min.js"></script>
-  	<script src="js/account.js"></script>
+  	<script src="js/dataManage.js"></script>
   </body>
 </html>

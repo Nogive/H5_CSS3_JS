@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>任务列表</title>
+  <link rel="stylesheet" href="./css/index.css">
+  <script type="text/javascript" src="../../lib/js/vue.js"></script>
+  <script src="../../lib/js/vue-resource.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="currentValue" @keyup="get($event)" @keydown.down="changeDown()" @keydown.up.prevent="changeUp()">
+    <ul>
+        <li v-for="(value,index) in myData" :class="{gray:index==currentIndex}">
+            {{value}}
+        </li>
+    </ul>
+    <p v-show="myData.length==0">暂无数据...</p>
+  </div>
+  <script>
+    new Vue({
+      data(){
+        return {
+          myData:[],
+          currentValue:'',
+          currentIndex:0
+        }
+      },
+      methods:{
+        get(ev){
+          if(ev.keyCode==38||ev.keyCode==40) return;
+          if(ev.keyCode==13){
+            window.open('https://www.baidu.com/s?wd='+this.currentValue)
+          }
+          this.$http.jsonp( "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",{
+            wd:this.currentValue
+          },{
+            jsonp:'cb'
+          }).then((res)=>{
+            this.myData=res.data.s;
+          },(err)=>{
+            console.log(err);
+          });
+        },
+        changeDown(){
+          this.currentIndex++;
+          if(this.currentIndex==this.myData.length){
+            this.currentIndex=0;
+          }
+          this.currentValue=this.myData[this.currentIndex];
+        },
+        changeUp(){
+          this.currentIndex--;
+          if(this.currentIndex<0){
+            this.currentIndex=this.myData.length-1;
+          }
+          this.currentValue=this.myData[this.currentIndex];
+        }
+      }
+    }).$mount('#app');
+  </script>
+</body>
+</html>

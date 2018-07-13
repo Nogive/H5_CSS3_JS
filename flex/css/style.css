@@ -1,0 +1,52 @@
+@charset "UTF-8";
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.box{
+  height: 400px;
+  border: 1px solid red;
+  list-style: none;
+  display: flex;
+  /* flex-direction: row;
+  flex-wrap: wrap; */
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content:flex-start;
+  
+}
+.box li{
+  /* flex: 1; */
+  padding: 0px 45px;
+}
+.box li:nth-child(1){
+  background-color: aqua;
+}
+.box li:nth-child(2){
+  background-color: rgb(0, 255, 34);
+}
+.box li:nth-child(3){
+  background-color: rgb(255, 0, 221);
+}
+.box li:nth-child(4){
+  background-color: rgb(255, 94, 0);
+}
+.box li:nth-child(5){
+  background-color: rgb(0, 255, 242);
+}
+.box li:nth-child(6){
+  background-color: red;
+}
+.box li:nth-child(7){
+  background-color: rgb(0, 255, 34);
+}
+.box li:nth-child(8){
+  background-color: rgb(255, 0, 221);
+}
+.box li:nth-child(9){
+  background-color: rgb(255, 94, 0);
+}
+.box li:nth-child(10){
+  background-color: rgb(0, 255, 242);
+}

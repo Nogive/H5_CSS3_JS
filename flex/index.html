@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Flex</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <div class="main">
+    <ul class="box">
+      <li>flex</li>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>flex</li>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+  </div>
+</body>
+</html>
+<!-- 
+  display: flex; //让某个元素弹性布局
+  //容器属性
+  flex-direction: row;//决定主轴方向，项目排列方向
+                  row:主轴为水平方向，起点在左端。
+                  row-reverse:主轴为水平方向，起点在右端。
+                  column:主轴为垂直方向，起点在上沿。
+                  colum-reverse:主轴为垂直方向，起点在下沿。
+  justify-content:主轴方向上的对齐
+                  flex-start:左对齐，默认
+                  flex-end:右对齐
+                  center:居中
+                  space-betweem:两端对齐，项目之间的间隔都相等。
+                  space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
+  align-items:交叉轴上的对齐
+              flex-start:交叉轴的起点对齐
+              flex-end:交叉轴的终点对齐
+              center:交叉轴的中点对齐
+              baseline: 项目的第一行文字的基线对齐。
+              stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度
+  flex-wrap:轴线上的换行
+            nowrap（默认）：不换行
+            wrap：换行，第一行在上方
+            wrap-reverse：换行，第一行在下方
+  flex-flow:flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。
+  
+  //项目属性
+  flex:1; //弹性布局里面的元素均分空间
+
+  http://www.runoob.com/w3cnote/flex-grammar.html
+-->

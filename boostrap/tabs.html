@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>选项卡</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+</head>
+<body>
+  <p class="text-danger">tab选项卡</p>
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+      <a href="#bulletin" role="tab" data-toggle="tab">公告</a>
+    </li>
+    <li>
+      <a href="#rule" role="tab" data-toggle="tab">规则</a>
+    </li>
+    <li>
+      <a href="#forum" role="tab" data-toggle="tab">论坛</a>
+    </li>
+    <li>
+      <a href="#security" role="tab" data-toggle="tab">安全</a>
+    </li>
+    <li>
+      <a href="#welfare" role="tab" data-toggle="tab">公益</a>
+    </li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane fade in active" id="bulletin">公告内容</div>
+    <div class="tab-pane fade" id="rule">规则内容</div>
+    <div class="tab-pane fade" id="forum">论坛内容</div>
+    <div class="tab-pane fade" id="security">安全内容</div>
+    <div class="tab-pane fade" id="welfare">公益内容</div>
+  </div>
+  <br>
+  <p class="text-danger">胶囊选项卡</p>
+  <ul id="pillTab" class="nav nav-pills" role="tablist">
+      <li class="active">
+        <a href="#bulletin-pill" role="tab">公告</a>
+      </li>
+      <li>
+        <a href="#rule-pill" role="tab">规则</a>
+      </li>
+      <li>
+        <a href="#forum-pill" role="tab">论坛</a>
+      </li>
+      <li>
+        <a href="#security-pill" role="tab">安全</a>
+      </li>
+      <li>
+        <a href="#welfare-pill" role="tab">公益</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane fade in active" id="bulletin-pill">公告内容</div>
+      <div class="tab-pane fade" id="rule-pill">规则内容</div>
+      <div class="tab-pane fade" id="forum-pill">论坛内容</div>
+      <div class="tab-pane fade" id="security-pill">安全内容</div>
+      <div class="tab-pane fade" id="welfare-pill">公益内容</div>
+    </div>
+
+    <br>
+    <button class="btn btn-default" data-toggle="tooltip" data-placement="bottom" data-original-title="提示语句">提示框</button>
+
+  <script src="./js/jquery-3.1.1.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+    $(function(){
+      $('#pillTab a').click(function(e){
+        e.preventDefault();
+        $(this).tab('show');
+      })
+      $('[data-toggle="tooltip"]').tooltip();
+    })
+  </script>
+</body>
+</html>

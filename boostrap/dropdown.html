@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>dropdown</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+</head>
+<body>
+  <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="fruit">
+      水果
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="fruit">
+      <li role="presentation" class="dropdown-header">最爱系列</li>
+      <li role="presentation">
+        <a role="menuitem" tabindex="-1" href="#">苹果</a>
+      </li>
+      <li role="presentation">
+          <a role="menuitem" tabindex="-1" href="#">香蕉</a>
+      </li>
+      <li role="presentation">
+          <a role="menuitem" tabindex="-1" href="#">西瓜</a>
+      </li>
+      <li role="presentation" class="divider"></li>
+      <li role="presentation" class="dropdown-header">次爱系列</li>
+      <li role="presentation">
+          <a role="menuitem" tabindex="-1" href="#">橘子</a>
+      </li>
+      <li role="presentation">
+          <a role="menuitem" tabindex="-1" href="#">葡萄</a>
+      </li>
+    </ul>
+  </div>
+
+  <hr>
+
+  <div class="btn-group">
+    <button class="btn btn-default">首页</button>
+    <button class="btn btn-default">产品展示</button>
+    <button class="btn btn-default">案例分析</button>
+    <button class="btn btn-default">联系我们</button>
+    <div class="btn-group dropdown">
+        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          关于我们
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li><a href="#">公司简介</a></li>
+          <li><a href="#">企业文化</a></li>
+          <li><a href="#">组织结构</a></li>
+          <li><a href="#">客服服务</a></li>
+        </ul>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="btn-group-vertical">
+    <button class="btn btn-default">首页</button>
+    <button class="btn btn-default">产品展示</button>
+    <button class="btn btn-default">案例分析</button>
+    <button class="btn btn-default">联系我们</button>
+    <div class="btn-group dropup">
+        <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          关于我们
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li><a href="#">公司简介</a></li>
+          <li><a href="#">企业文化</a></li>
+          <li><a href="#">组织结构</a></li>
+          <li><a href="#">客服服务</a></li>
+        </ul>
+    </div>
+  </div>
+
+  <script src="./js/jquery-3.1.1.min.js"></script>
+  <script src="./js/bootstrap.js"></script>
+</body>
+</html>

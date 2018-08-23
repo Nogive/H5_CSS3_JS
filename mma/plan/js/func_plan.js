@@ -11,19 +11,22 @@ function requestRemotePlanListAndUpdate(listApiUrl) {
       xhr.setRequestHeader("Authorization", cookie.getCookie("token"));
     },
     success: function(data, status, xhr) {
-      //onlineDate = new Date(xhr.getResponseHeader("Date"));
-      onlineDate = new Date();
+	  if(xhr.getResponseHeader("Date")){
+		onlineDate = new Date(xhr.getResponseHeader("Date"));  
+	  }else{
+		onlineDate = new Date();  
+	  }
       if (data.code == $g.API_CODE.OK) {
         //当有记录且没有下个月的记录，才允许新建
-        //mma.getCache("account").then(function(value) {
-          //currentAccount = value;
+        mma.getCache("account").then(function(value) {
+          currentAccount = value;
           if (currentAccount.roleId == $g.ROLE.SR) {
             $$("#planNav").hide();
             if (data.data == undefined || data.data.length == 0) {
               mma.setActionMenus(true, [MENU.create]);
             } else {
-              let totals = data.data;
-              let nextMonth = getNextMonthTimeStamp(onlineDate);
+              var totals = data.data;
+              var nextMonth = getNextMonthTimeStamp(onlineDate);
               if (totals[0].month == nextMonth) {
                 mma.setActionMenus(false);
               } else {

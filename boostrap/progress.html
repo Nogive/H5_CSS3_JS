@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>进度条</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <style> 
+    .progress-bar{
+      width: 40%;
+    }
+  </style>
+</head>
+<body>
+  <br>
+  <div class="progress">
+    <div class="progress-bar" style="width:40%"></div>
+  </div>
+
+  <div class="progress">
+    <div class="progress-bar progress-bar-info"></div>
+  </div>
+  <div class="progress">
+    <div class="progress-bar progress-bar-success"></div>
+  </div>
+
+  <div class="progress progress-striped">
+    <div class="progress-bar progress-bar-danger"></div>
+  </div>
+  <div class="progress progress-striped active">
+    <div class="progress-bar progress-bar-warning"></div>
+  </div>
+
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">40%</div>
+  </div>
+
+  <script src="./js/jquery-3.1.1.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

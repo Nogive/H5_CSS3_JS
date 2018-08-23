@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>test</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <style>
+  </style>
+</head>
+<body>
+  <h1>form</h1>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <form class="form-horizontal form-label-left" id="form">
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">最少拜访网点数</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+            <input type="number" class="form-control" name="minNumber" id="minNumber" value="1">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">最少拜访网点次数 </label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+            <input type="number" class="form-control" name="minTimes" id="minTimes" value="1">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">满足MVO网点全覆盖</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <label class="control-label">提交</label>
+              <div class="radio">
+                <label>
+                  <input type="radio" checked="" id="isFullMvoForSubmit" value="1" name="fullMvoForSubmit"> 必须
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" id="notFullMvoForSubmit" value="0" name="fullMvoForSubmit"> 非必须
+                </label>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <label class="control-label">主管最终审批</label>
+              <div class="radio">
+                <label>
+                  <input type="radio" checked="" id="isFullMvoApprove" value="1" name="fullMvoForApprove"> 必须
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" id="notFullMvoApprove" value="0" name="fullMvoForApprove"> 非必须
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">满足最小拜访网点数</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <label class="control-label">提交</label>
+              <div class="radio">
+                <label>
+                  <input type="radio" checked="" id="isMinNumberForSubmit" value="1" name="minNumberForSubmit"> 必须
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" id="notMinNumberForSubmit" value="0" name="minNumberForSubmit"> 非必须
+                </label>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <label class="control-label">主管最终审批</label>
+              <div class="radio">
+                <label>
+                  <input type="radio" checked="" id="isMinNumberForApprove" value="1" name="minNumberForApprove"> 必须
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" id="notMinNumberForApprove" value="0" name="minNumberForApprove"> 非必须
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">满足最小拜访网点次数</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <label class="control-label">提交</label>
+              <div class="radio">
+                <label>
+                  <input type="radio" checked="" id="isMinTimesForSubmit" value="1" name="minTimesForSubmit"> 必须
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" id="notMinTimesForSubmit" value="0" name="minTimesForSubmit"> 非必须
+                </label>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <label class="control-label">主管最终审批</label>
+              <div class="radio">
+                <label>
+                  <input type="radio" checked="" id="isMinTimesForApprove" value="1" name="minTimesForApprove"> 必须
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" id="notMinTimesForApprove" value="0" name="minTimesForApprove"> 非必须
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label col-md-3 col-sm-3 col-xs-12">至少满足上述几项</label>
+          <div class="col-md-9 col-sm-9 col-xs-12">
+            <select class="form-control" name="howMeet" id="howMeet">
+              <option value="0">0项</option>
+              <option value="1">1项</option>
+              <option value="2">2项</option>
+              <option value="3">3项</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+            <button type="button" class="btn btn-default">取消</button>
+            <button type="button" class="btn btn-info" id="submit">提交</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6">
+    </div>
+  </div>
+  <script src="./js/jquery-3.1.1.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('#submit').click(function(){
+        console.log($('#form').serializeArray());
+      })
+    })
+  </script>
+</body>
+</html>

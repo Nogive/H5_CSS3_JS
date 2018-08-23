@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>nav</title>
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+</head>
+<body style="padding-bottom: 60px;">
+  <ul class="nav nav-tabs">
+    <li><a href="#">首页</a></li>
+    <li class="active"><a href="#">产品</a></li>
+    <li><a href="#">新闻</a></li>
+    <li><a href="#">关于</a></li>
+  </ul>
+
+  <br>
+
+  <ul class="nav nav-pills">
+    <li class="active"><a href="#">首页</a></li>
+    <li><a href="#">产品</a></li>
+    <li><a href="#">新闻</a></li>
+    <li><a href="#">关于</a></li>
+  </ul>
+
+  <br>
+
+  <ul class="nav nav-pills nav-stacked">
+    <li class="active"><a href="#">首页</a></li>
+    <li><a href="#">产品</a></li>
+    <li><a href="#">新闻</a></li>
+    <li><a href="#">关于</a></li>
+  </ul>
+
+  <br>
+  <ul class="nav nav-tabs nav-justified">
+    <li><a href="#">首页</a></li>
+    <li class="active"><a href="#">产品</a></li>
+    <li><a href="#">新闻</a></li>
+    <li><a href="#">关于</a></li>
+  </ul>
+
+  <br>
+  <ul class="nav nav-tabs">
+    <li><a href="#">首页</a></li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown"  id="demo1" aria-expanded="true">
+        产品
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="demo1">
+        <li><a href="#">outer item</a></li>
+        <li><a href="#">inner item</a></li>
+      </ul>
+    </li>
+    <li><a href="#">新闻</a></li>
+    <li><a href="#">关于</a></li>
+  </ul>
+
+  <br>
+  <ol class="breadcrumb">
+    <li><a href="#">首页</a></li>
+    <li><a href="#">我的书</a></li>
+    <li class="active"><a href="#">《bootstrap》</a></li>
+  </ol>
+  <br>
+  <div class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <div class="navbar-header">
+      <a href="#" class="navbar-brand">Title</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#">首页</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="demo2">
+          产品
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="demo2">
+          <li><a href="#">新闻</a></li>
+          <li><a href="#">关于</a></li>
+        </ul>
+      </li>
+      <li><a href="#">新闻</a></li>
+      <li><a href="#">关于</a></li>
+    </ul>
+    <form action="##" class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="请输入关键词">
+      </div>
+      <button type="submit" class="btn btn-default">搜索</button>
+    </form>
+  </div>
+  <br>
+  <div class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+        <!-- .navbar-toggle样式用于toggle收缩的内容，即nav-collapse collapse样式所在元素 -->
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="sr-only">Toggle Navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="#" class="navbar-brand">Title</a>
+      </div>
+      <div class="collapse navbar-collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="#">首页</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="demo2">
+              产品
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="demo2">
+              <li><a href="#">新闻</a></li>
+              <li><a href="#">关于</a></li>
+            </ul>
+          </li>
+          <li><a href="#">新闻</a></li>
+          <li><a href="#">关于</a></li>
+        </ul>
+      </div>
+    </div>
+
+  <script src="./js/jquery-3.1.1.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

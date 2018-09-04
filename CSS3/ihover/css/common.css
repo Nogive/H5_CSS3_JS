@@ -1,0 +1,209 @@
+@charset "utf-8";
+*{
+  box-sizing: border-box;
+}
+.content{
+  width: 500px;
+  margin: 30px auto;
+}
+.box{
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: 30px auto;
+  position: relative;
+}
+.img,.text{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.img img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.img{
+  z-index: 1;
+}
+.text{
+  z-index: 2;
+  background: rgba(0,0,0,.5);
+  text-align: center;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text-text{
+  border-radius: 50%;
+}
+.text-text p{
+  font-size: 12px;
+  font-style:italic;
+}
+
+/* 案例 1 */
+.img1:after{
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 50%;
+  top: -10px;
+  left: -10px;
+  border: 10px solid;
+  border-color: aqua aqua orangered orangered;
+  transform: rotate(90deg);
+  transition: 1s;
+}
+.text1{
+  opacity: 0;
+  transition: 1s;
+}
+.box1:hover .img1:after{
+  transform: rotate(270deg);
+}
+.box1:hover .text1{
+  opacity: 1;
+}
+
+/* 案例 2 */
+.text2{
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: 1s;
+  pointer-events: none;
+}
+.img2:after{
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 15px rgba(0, 0, 0, 0.2);
+}
+.img2{
+  transition: 1s;
+}
+.box2:hover .text2{
+  opacity: 1;
+  transform: translateX(0);
+}
+.box2:hover .img2{
+  transform: rotate(-90deg);
+}
+
+/* 案例3 */
+.text3{
+  background:rgba(0,0,0,.8);
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: 1s;
+}
+.img3{
+  transform-origin: center center;
+  transition: 1s;
+  z-index: 3;
+}
+.img3:after{
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 15px rgba(255, 255, 255, 0.6);
+}
+.box3:hover .text3{
+  opacity: 1;
+  transform: translateX(0);
+}
+.box3:hover .img3{
+  transform: translateX(50%) scale(.5);
+}
+
+/* 案例3 */
+.img4:after{
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 15px rgba(255, 255, 255, 0.6);
+}
+.text4{
+  background:rgba(0,0,0,.8);
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: .6s;
+}
+.img4{
+  transition: 1s;
+}
+.box4:hover .text4{
+  opacity: 1;
+  transform: translateX(0);
+}
+.box4:hover .img4{
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+/* 案例5 */
+.img5:after{
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 15px rgba(255, 255, 255, 0.6);
+}
+.text5{
+  transform: rotateY(180deg);
+  opacity: 0;
+  transition: .6s;
+}
+.box5:hover .text5{
+  opacity: 1;
+  transform: rotateY(360deg);
+}
+
+/* 案例6 */
+.img6:after{
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 15px rgba(0, 0, 0, 0.3);
+}
+.img6{
+  transform-origin: center center;
+  transition: .8s;
+}
+.text6{
+  opacity: 0;
+  transform: scale(0.5);
+  transition: .6s;
+}
+.box6:hover .text6{
+  opacity: 1;
+  transform: scale(1);
+}
+.box6:hover .img6{
+  opacity: 0;
+  transform: scale(1.5)
+}

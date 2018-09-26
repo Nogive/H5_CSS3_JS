@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JS面向对象——继承实现拖拽</title>
+  <style>
+    div{
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      text-align: center;
+      font-size: 10px;
+    }
+    #div1{
+      background-color: rgb(66, 224, 164);
+    }
+    #div2{
+      background-color: aqua;
+      left: 100px;
+    }
+    #div3{
+      width: 300px;
+      background: url("./16.jpg") no-repeat center center;
+      left: 200px;
+      overflow: hidden;
+    }
+    #div3:after{
+      content:'';
+      width: 100%;
+      height: 50%;
+      background-color: #ffffff;
+      position: absolute;
+      top: 75%;
+      left: 0;
+      border-radius: 50% 50% 0 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="div1">父，拖拽无边界限制</div>
+  <div id="div2">子，有边界限制，不允许出屏幕</div>
+</body>
+<script>
+  window.onload=function(){
+    var el=new Drag('div1');
+    el.init();
+
+    var childEl=new ChildDrag('div2');
+    childEl.init();
+  }
+  function Drag(id){
+    this.obj=document.getElementById(id);
+    this.disX=0;
+    this.disY=0;
+  }
+  Drag.prototype.init=function(){
+    var This=this;
+    this.obj.onmousedown=function(ev){
+      var ev=ev||window.event;
+      This.fnDown(ev);
+      document.onmousemove=function(ev){
+        var ev=ev||window.event;
+        This.fnMove(ev);
+      };
+      document.onmouseup=function(){
+        This.fnUp();
+      }
+      return false;
+    }
+  }
+  Drag.prototype.fnDown=function(ev){
+    this.disX=ev.clientX-this.obj.offsetLeft;
+    this.disY=ev.clientY=this.obj.offsetTop;
+  }
+  Drag.prototype.fnMove=function(ev){
+    this.obj.style.left=ev.clientX-this.disX+'px';
+    this.obj.style.top=ev.clientY-this.disY+'px';
+  }
+  Drag.prototype.fnUp=function(){
+    document.onmousemove=null;
+    document.onmouseup=null;
+  }
+
+  //继承
+  function ChildDrag(id) {
+    Drag.call(this, id);
+  }
+  extend(ChildDrag.prototype, Drag.prototype);
+  ChildDrag.prototype.fnMove=function(ev){
+    var L=ev.clientX-this.disX;
+    var T=ev.clientY-this.disY;
+    if(L<0){
+      L=0;
+    }else if(L>document.clientWidth-this.obj.offsetWidth){
+      L= document.clientWidth - this.obj.offsetWidth
+    }
+    if (T < 0) {
+      T = 0;
+    } else if (L > document.clientHeight - this.obj.offsetHeight) {
+      T = document.clientHeight - this.obj.offsetHeight
+    }
+    this.obj.style.left=L+'px';
+    this.obj.style.top=T+'px';
+  }
+
+  function extend(obj1,obj2){
+    for(var attr in obj2){
+      obj1[attr]=obj2[attr];
+    }
+  }
+</script>
+</html>

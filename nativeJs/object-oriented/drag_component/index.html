@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JS面向对象——封装拖拽组件</title>
+  <style>
+    div{
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      text-align: center;
+      font-size: 10px;
+    }
+    #div1{
+      background-color: rgb(66, 224, 164);
+    }
+    #div2{
+      background-color: aqua;
+      left: 100px;
+    }
+    #div3{
+      background-color:pink;
+      left: 200px;
+    }
+    #div4{
+      background-color: palegoldenrod;
+      left: 300px;
+    }
+    
+  </style>
+</head>
+<body>
+  <ol>
+    <li>默认拖拽</li>
+    <li>按下时候标题变为:"down",按下抬起标题都不变</li>
+    <li>按下时候标题变为:"down",抬起的时候标题变为:"up"</li>
+    <li>按下时候标题不变,抬起的时候标题变为:"bye bye"</li>
+  </ol>
+  <div id="div1"></div>
+  <div id="div2"></div>
+  <div id="div3"></div>
+  <div id="div4"></div>
+</body>
+<script>
+  window.onload=function(){
+    var el1=new Drag();
+    el1.init('div1');
+    var el2 = new Drag();
+    el2.init('div2',{
+      toDown:function(){
+        document.title="downdown";
+      }
+    });
+    var el3 = new Drag();
+    el3.init('div3',{
+      toDown: function () {
+        document.title = "down";
+      },
+      toUp:function(){
+        document.title = "up";
+      }
+    });
+    var el4 = new Drag();
+    el4.init('div4',{
+      toUp: function () {
+        document.title = "bye bye";
+      }
+    });
+  }
+  function Drag(id){
+    this.obj=null;
+    this.disX=0;
+    this.disY=0;
+    this.settings={
+      toDown:function(){},
+      toUp:function(){}
+    }
+  }
+  Drag.prototype.init=function(id,opts){
+    var This=this;
+    this.obj= document.getElementById(id);
+    console.log(this.obj);
+    extend(this.settings,opts);
+    this.obj.onmousedown=function(ev){
+      var ev=ev||window.event;
+      This.fnDown(ev);
+      This.settings.toDown();
+      document.onmousemove=function(ev){
+        var ev=ev||window.event;
+        This.fnMove(ev);
+      };
+      document.onmouseup=function(){
+        This.fnUp();
+        This.settings.toUp();
+      }
+      return false;
+    }
+  }
+  Drag.prototype.fnDown=function(ev){
+    this.disX=ev.clientX-this.obj.offsetLeft;
+    this.disY=ev.clientY=this.obj.offsetTop;
+  }
+  Drag.prototype.fnMove=function(ev){
+    this.obj.style.left=ev.clientX-this.disX+'px';
+    this.obj.style.top=ev.clientY-this.disY+'px';
+  }
+  Drag.prototype.fnUp=function(){
+    document.onmousemove=null;
+    document.onmouseup=null;
+  }
+
+  //将一个对象的属性复制给另一个对象
+  function extend(obj1,obj2){
+    for(var attr in obj2){
+      obj1[attr]=obj2[attr];
+    }
+  }
+</script>
+</html>

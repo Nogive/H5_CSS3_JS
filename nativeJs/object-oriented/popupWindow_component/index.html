@@ -16,6 +16,7 @@
       height: 0px;
       background-color: #fff;
       border: 1px solid #000;
+      z-index: 2;
     }
     .header{
       background-color: grey;
@@ -24,12 +25,22 @@
     .header .close{
       float: right;
     }
+    .mask{
+      width: 300px;
+      height: 300px;
+      background-color: rgba(0,0,0,.5);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
   </style>
 </head>
 <body>
   <button class="btn">登录</button>
   <button class="btn">目录</button>
   <button class="btn">广告</button>
+  <!-- <div class="mask"></div> -->
 </body>
 <script>
   window.onload=function(){
@@ -37,7 +48,8 @@
     aBtn[0].onclick=function(){
       var w1=new popupWindow();
       w1.init({
-        title:"登录"
+        title:"登录",
+        mask:true
       });
     };
     aBtn[1].onclick = function () {
@@ -65,34 +77,64 @@
       width:300,
       height:200,
       dir:'center',
-      title:"标题"
+      title:"标题",
+      mask: false
     }
   }
+  popupWindow.prototype.switchFlag={};
   popupWindow.prototype.init=function(opts){
     extend(this.settings,opts);
-    var el=document.createElement('div');
-    el.className="window-box";
-    el.innerHTML='<div class="header">'+
-      '<span class="title">'+this.settings.title+'</span>'+
-      '<span class="close">X</span>'+
-    '</div>'+
-    '<div class="content"></div>'+
-    '<div class="footer"></div>';
-    document.body.appendChild(el);
-    this.obj=el;
-    this.setData();
+    if(this.switchFlag[opts.iNow]==undefined){
+      this.switchFlag[opts.iNow]=true;
+    }
+    if(this.switchFlag[opts.iNow] ==true){
+      var el = document.createElement('div');
+      el.className = "window-box";
+      el.innerHTML = '<div class="header">' +
+        '<span class="title">' + this.settings.title + '</span>' +
+        '<span class="close">X</span>' +
+        '</div>' +
+        '<div class="content"></div>' +
+        '<div class="footer"></div>';
+      document.body.appendChild(el);
+      this.obj = el;
+      this.setData();
+      var This=this;
+      el.getElementsByClassName('close')[0].onclick=function(){
+         This.close(el);
+      }
+      this.switchFlag[opts.iNow] = false;
+      if(this.settings.mask){
+        this.showMask();
+      }
+    }
+    
   }
-  popupWindow.prototype.setData=function(){
-    this.obj.style.width=this.settings.width+'px';
-    this.obj.style.height=this.settings.height+'px';
-    if(this.settings.dir=='center'){
-      this.obj.style.left = (getWindowWidth()-this.obj.offsetWidth)/2+'px';
+  popupWindow.prototype.showMask=function(){
+    var el = document.createElement('div');
+    el.className = "mask";
+    document.body.appendChild(el);
+    el.style.width= getWindowWidth()+'px';
+    el.style.height=getWindowHeight()+'px';
+  }
+  popupWindow.prototype.close=function(obj){
+    obj.parentNode.removeChild(obj);
+    //document.body.removeChild(obj);
+    this.switchFlag[this.settings.iNow] = true;
+    var oMask=document.getElementsByClassName('mask')[0];
+    document.body.removeChild(oMask);
+  }
+  popupWindow.prototype.setData = function () {
+    this.obj.style.width = this.settings.width + 'px';
+    this.obj.style.height = this.settings.height + 'px';
+    if (this.settings.dir == 'center') {
+      this.obj.style.left = (getWindowWidth() - this.obj.offsetWidth) / 2 + 'px';
       this.obj.style.top = (getWindowHeight() - this.obj.offsetHeight) / 2 + 'px';
-    }else if (this.settings.dir == 'right') {
-      this.obj.style.left = getWindowWidth() - this.obj.offsetWidth+ 'px';
-      this.obj.style.top = getWindowHeight() - this.obj.offsetHeight+ 'px';
-    }else{
-      this.obj.style.left ='0px';
+    } else if (this.settings.dir == 'right') {
+      this.obj.style.left = getWindowWidth() - this.obj.offsetWidth + 'px';
+      this.obj.style.top = getWindowHeight() - this.obj.offsetHeight + 'px';
+    } else {
+      this.obj.style.left = '0px';
     }
   }
   //将一个对象的属性复制给另一个对象

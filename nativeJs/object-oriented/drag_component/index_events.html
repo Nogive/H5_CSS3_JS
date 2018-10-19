@@ -47,20 +47,22 @@
   window.onload=function(){
     var el1=new Drag();
     el1.init('div1');
+
     var el2 = new Drag();
     el2.init('div2');
     bindEvents(el2.obj,'toDown',function(){
       document.title = "downdown";
     })
+
     var el3 = new Drag();
-    el3.init('div3',{
-      toDown: function () {
-        document.title = "down";
-      },
-      toUp:function(){
-        document.title = "up";
-      }
-    });
+    el3.init('div3');
+    bindEvents(el3.obj, 'toDown', function () {
+      document.title = "down";
+    })
+    bindEvents(el3.obj, 'toUp', function () {
+      document.title = "up";
+    })
+
     var el4 = new Drag();
     el4.init('div4',{
       toUp: function () {
@@ -81,13 +83,10 @@
   Drag.prototype.init=function(id,opts){
     var This=this;
     this.obj= document.getElementById(id);
-    this.obj.listeners=this.obj.listeners || [];
-
-    extend(this.settings,opts);
+    //extend(this.settings,opts);
     this.obj.onmousedown=function(ev){
       var ev=ev||window.event;
       This.fnDown(ev);
-      This.settings.toDown();
       fireEvents(This.obj,'toDown');
       document.onmousemove=function(ev){
         var ev=ev||window.event;
@@ -95,7 +94,7 @@
       };
       document.onmouseup=function(){
         This.fnUp();
-        This.settings.toUp();
+        fireEvents(This.obj, 'toUp');
       }
       return false;
     }
@@ -121,6 +120,10 @@
   }
 
   function bindEvents(obj,events,fn){
+    obj.listeners=obj.listeners || {};
+    obj.listeners[events]=obj.listeners[events] || [];
+    obj.listeners[events].push(fn);
+
     if(obj.addEventListener){
       obj.addEventListener(events,fn,false);
     }else{
@@ -128,8 +131,8 @@
     }
   }
   function fireEvents(obj,events) {
-    for(var i=0;i<obj.listeners.length;i++){
-      obj.listeners[i]();
+    for(var i=0;i<obj.listeners[events].length;i++){
+      obj.listeners[events][i]();
     }
   }
 </script>

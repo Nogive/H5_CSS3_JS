@@ -6,10 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>面向对象组件——选项卡</title>
   <style>
-    .content{
+    .tab{
       width: 400px;
-      height: 200px;
-      border: 1px solid red;
+      margin-top: 20px;
+    }
+    .content{
+      border: 1px solid #000;
+      height: 180px;
+      margin-top: 10px;
     }
     .content div{
       width: 100%;
@@ -24,28 +28,219 @@
     .content .block{
       display: block;
     }
+    .title{
+      color: orangered
+    }
   </style>
 </head>
 <body>
-  <button class="active" id="btn1">按钮1</button>
-  <button id="btn2">按钮2</button>
-  <button id="btn3">按钮2</button>
-  <div class="content">
-    <div id="div1" class="block">
-      111111
-    </div>
-    <div id="div2">
-      222222
-    </div>
-    <div id="div3">
-      444444
+  <p class="title">默认</p>
+  <div class="tab" id="div1">
+    <button class="active">按钮1</button>
+    <button>按钮2</button>
+    <button>按钮4</button>
+    <div class="content">
+      <div class="block">
+        111111
+      </div>
+      <div>
+        222222
+      </div>
+      <div>
+        444444
+      </div>
     </div>
   </div>
+  <hr>
+  <p class="title">options:events 鼠标移入时切换</p>
+  <div class="tab" id="div2">
+    <button class="active">按钮1</button>
+    <button>按钮2</button>
+    <button>按钮4</button>
+    <div class="content">
+      <div class="block">
+        111111
+      </div>
+      <div>
+        222222
+      </div>
+      <div>
+        444444
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <p class="title">options:delay 鼠标移入时延迟200ms切换</p>
+  <div class="tab" id="div3">
+    <button class="active">按钮1</button>
+    <button>按钮2</button>
+    <button>按钮4</button>
+    <div class="content">
+      <div class="block">
+        111111
+      </div>
+      <div>
+        222222
+      </div>
+      <div>
+        444444
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <p class="title">function:setCurrent 设置当前tab</p>
+  <div class="tab" id="div4">
+    <button class="active">按钮1</button>
+    <button>按钮2</button>
+    <button>按钮4</button>
+    <div class="content">
+      <div class="block">
+        111111
+      </div>
+      <div>
+        222222
+      </div>
+      <div>
+        444444
+      </div>
+    </div>
+  </div>
+
+  <hr>
+  <p class="title">function:getContent 获取当前content</p>
+  <div class="tab" id="div5">
+    <button class="active">按钮1</button>
+    <button>按钮2</button>
+    <button>按钮4</button>
+    <div class="content">
+      <div class="block">
+        111111
+      </div>
+      <div>
+        222222
+      </div>
+      <div>
+        444444
+      </div>
+    </div>
+  </div>
+  <button id="get">获取当前内容</button>
+
+  <hr>
+  <p class="title">events:beforeClick afterClick 自定义事件</p>
+  <div class="tab" id="div6">
+    <button class="active">按钮1</button>
+    <button>按钮2</button>
+    <button>按钮4</button>
+    <div class="content">
+      <div class="block">
+        111111
+      </div>
+      <div>
+        222222
+      </div>
+      <div>
+        444444
+      </div>
+    </div>
+  </div>
+
   <script src="./jquery-3.1.1.min.js"></script>
   <script>
-    $(function(){
+    /*
+    options: events delay
+    functions: setCurrent getContent
+    events: beforeClick  afterClick
+    */
 
+    $(function(){
+      var t1=new Tab();
+      t1.init('div1')
+
+      var t2 = new Tab();
+      t2.init('div2',{
+        events:'mouseover'
+      })
+
+      var t3 = new Tab();
+      t3.init('div3', {
+        events: 'mouseover',
+        delay:200
+      })
+
+      var t4 = new Tab();
+      t4.init('div4')
+      t4.setCurrent(2);
+
+      var t5 = new Tab();
+      t5.init('div5')
+      $('#get').click(()=>{
+        alert(t5.getContent());
+      })
+
+      var t6 = new Tab();
+      t6.init('div6')
+      t6.aBtn.on('beforeClick', function () {
+        alert('beforeClick' + t6.getContent());
+      });
+      t6.aBtn.on('afterClick', function () {
+        alert('afterClick' + t6.getContent());
+      })
     })
+    function Tab(){
+      this.oTab=null;
+      this.aBtn=null;
+      this.aDiv=null;
+      this.iNow=0;
+      this.settings={
+        events:'click'
+      }
+    }
+    Tab.prototype.init=function(oParent,opts){
+      this.oTab=$('#'+oParent);
+      this.aBtn=this.oTab.find('button');
+      this.aDiv=this.oTab.find('.content').find('div');
+      $.extend(this.settings,opts);
+      this.changeTab();
+    }
+    Tab.prototype.changeTab=function(){
+      var _this=this;
+      var timer=null;
+      this.aBtn.on(this.settings.events,function(){
+        var This=this;
+        if(_this.settings.events=="mouseover" && _this.settings.delay){
+          timer=setTimeout(() => {
+            showTab(This);
+          }, _this.settings.delay);
+        }else{
+          showTab(This);
+        }
+      })
+      this.aBtn.on('mouseout',function(){
+        clearTimeout(timer);
+      })
+      function showTab(obj){
+        $(obj).trigger('beforeClick');
+        _this.aBtn.removeClass('active');
+        _this.aDiv.removeClass('block');
+        $(obj).addClass('active');
+        _this.aDiv.eq($(obj).index()).addClass('block');
+        _this.iNow = $(obj).index();
+        $(obj).trigger('afterClick');
+      }
+    }
+    Tab.prototype.setCurrent=function(index){
+      this.aBtn.removeClass('active');
+      this.aDiv.removeClass('block');
+      this.aBtn.eq(index).addClass('active');
+      this.aDiv.eq(index).addClass('block');
+      this.iNow=index;
+    }
+    Tab.prototype.getContent=function(){
+      return this.aDiv.eq(this.iNow).html();
+    }
   </script>
 </body>
 </html>

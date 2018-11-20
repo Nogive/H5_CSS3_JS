@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jsonpath</title>
+  <script src="./jsonpath.js"></script>
+</head>
+<body>
+  <p class="title">有如下json:</p>
+  <code>
+    json={
+      id:1,
+      name:'ccd',
+      pinxiang:[
+        {
+          id:1,
+          name:'ceceds'
+        }
+      ],
+      sku:{
+        id:1,
+        name:'lala',
+        children:[{
+          id:2,
+          name:'jerry'
+        }]
+      }
+    }
+  </code>
+  <br>
+  <br>
+  <input type="text" placeholder="输入要获取的json值" id="input">
+  <input type="button" id="btn" value="获取结果">
+  <p>结果为：<span id="res"></span></p>
+  <script>
+    var json = {
+        id: 1,
+        name: 'ccd',
+        pinxiang: [
+          {
+            id: 1,
+            name: 'ceceds'
+          }
+        ],
+        sku: {
+          id: 1,
+          name: 'lala',
+          children: [{
+            id: 2,
+            name: 'jerry'
+          }]
+        }
+      }
+    window.onload=function(){
+      var oInput=document.getElementById('input');
+      var oBtn = document.getElementById('btn');
+      var oRes=document.getElementById('res');
+      oBtn.onclick=function(){
+        oRes.innerHTML= jsonPath(json, oInput.value);
+        console.log(jsonPath(json, oInput.value));
+      }
+    }
+  </script>
+</body>
+</html>

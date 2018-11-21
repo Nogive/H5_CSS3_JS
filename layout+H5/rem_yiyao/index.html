@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./css/reset.css">
   <link rel="stylesheet" href="./css/common.css">
@@ -11,16 +10,16 @@
 </head>
 <body>
   <header></header>
-  <div class="banner">
-    <ul class="banner">
+  <div class="banner-wrapper">
+    <ul class="banner clearfix">
       <li><img src="./img/1.jpg" alt=""></li>
       <li><img src="./img/2.jpg" alt=""></li>
       <li><img src="./img/3.jpg" alt=""></li>
       <li><img src="./img/4.jpg" alt=""></li>
       <li><img src="./img/5.jpg" alt=""></li>
     </ul>
-    <ol class="indexes">
-      <li></li>
+    <ol class="indexes clearfix">
+      <li class="current"></li>
       <li></li>
       <li></li>
       <li></li>
@@ -28,8 +27,34 @@
     </ol>
   </div>
   <main>
-    <div class="menu"></div>
-    <div class="product"></div>
+    <div class="menu">
+      <ul class="clearfix">
+        <li><a href="#"><i class="n1"></i>文字文字</a></li>
+        <li><a href="#"><i class="n2"></i>文字文字</a></li>
+        <li><a href="#"><i class="n3"></i>文字文字</a></li>
+        <li><a href="#"><i class="n4"></i>文字文字</a></li>
+        <li><a href="#"><i class="n1"></i>文字文字</a></li>
+        <li><a href="#"><i class="n2"></i>文字文字</a></li>
+        <li><a href="#"><i class="n3"></i>文字文字</a></li>
+        <li><a href="#"><i class="n4"></i>文字文字</a></li>
+      </ul>
+    </div>
+    <div class="product">
+      <div class="title">
+        <h3>全网最低价</h3>
+      </div>
+      <div class="yao clearfix">
+        <a href="#" class="a1 fl">
+          <img src="./img/a1.jpg" alt="">
+        </a>
+        <a href="#" class="a2 fr">
+          <img src="./img/a2.jpg" alt="">
+        </a>
+        <a href="#" class="a3 fr">
+          <img src="./img/a3.jpg" alt="">
+        </a>
+      </div>
+    </div>
   </main>
 </body>
 </html>

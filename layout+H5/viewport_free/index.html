@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=640">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>viewport free</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="font/iconfont.css">
+  <link rel="stylesheet" href="css/common.css">
+  <script src="./js/mobile-util.js"></script>
+</head>
+<body>
+  <div class="box" id="box">
+    <div class="page">
+      <header class="clearfix">
+        <a href="javascript:;" id="menu" class="menu fl iconfont icon-caidan"></a>
+        <span class="header_item"><a href="#" class="active">Open</a><a href="#">Close</a></span>
+        <a href="javascript:;" class="add fr iconfont icon-tianjia"></a>
+      </header>
+      <div class="item-wrapper">
+        <div class="header">
+          <div class="title clearfix">
+            <div class="user_img fl">
+              <img src="img/busy.jpg" alt="">
+            </div>
+            <h5>Martin Groove</h5>
+            <span class=" fr iconfont icon-xing1 save">175</span>
+          </div>
+          <p class="desc">I can basejump from the shard! Can you?</p>
+        </div>
+        <div class="img-wrapper">
+          <div class="img-content">
+            <img src="./img/1.jpg" alt="">
+            <div class="model">
+              <i></i>
+              <span>01:11::03</span>
+            </div>
+          </div>
+          <div class="img-btn">
+            <span class="people fl iconfont icon-yonghuicon"> people</span>
+            <span class="share fr iconfont icon-fenxiang"> share</span>
+            <a href="#" class="btn_mao iconfont icon-maoji"> ACCEPT</a>
+          </div>
+        </div>
+      </div>
+      <div class="item-wrapper">
+        <div class="header">
+          <div class="title clearfix">
+            <div class="user_img fl">
+              <img src="img/busy.jpg" alt="">
+            </div>
+            <h5>Martin Groove</h5>
+            <span class=" fr iconfont icon-xing1 save">175</span>
+          </div>
+          <p class="desc">I can basejump from the shard! Can you?</p>
+        </div>
+        <div class="img-wrapper">
+          <div class="img-content">
+            <img src="./img/3.jpg" alt="">
+            <div class="model">
+              <i></i>
+              <span>01:11::03</span>
+            </div>
+          </div>
+          <div class="img-btn">
+            <span class="people fl iconfont icon-yonghuicon"> people</span>
+            <span class="share fr iconfont icon-fenxiang"> share</span>
+            <a href="#" class="btn_mao iconfont icon-maoji"> ACCEPT</a>
+          </div>
+        </div>
+      </div>
+      <div class="item-wrapper">
+        <div class="header">
+          <div class="title clearfix">
+            <div class="user_img fl">
+              <img src="img/busy.jpg" alt="">
+            </div>
+            <h5>Martin Groove</h5>
+            <span class=" fr iconfont icon-xing1 save">175</span>
+          </div>
+          <p class="desc">I can basejump from the shard! Can you?</p>
+        </div>
+        <div class="img-wrapper">
+          <div class="img-content">
+            <img src="./img/2.jpg" alt="">
+            <div class="model">
+              <i></i>
+              <span>01:11::03</span>
+            </div>
+          </div>
+          <div class="img-btn">
+            <span class="people fl iconfont icon-yonghuicon"> people</span>
+            <span class="share fr iconfont icon-fenxiang"> share</span>
+            <a href="#" class="btn_mao iconfont icon-maoji"> ACCEPT</a>
+          </div>
+        </div>
+      </div>
+      <div class="item-wrapper">
+        <div class="header">
+          <div class="title clearfix">
+            <div class="user_img fl">
+              <img src="img/busy.jpg" alt="">
+            </div>
+            <h5>Martin Groove</h5>
+            <span class=" fr iconfont icon-xing1 save">175</span>
+          </div>
+          <p class="desc">I can basejump from the shard! Can you?</p>
+        </div>
+        <div class="img-wrapper">
+          <div class="img-content">
+            <img src="./img/4.png" alt="">
+            <div class="model">
+              <i></i>
+              <span>01:11::03</span>
+            </div>
+          </div>
+          <div class="img-btn">
+            <span class="people fl iconfont icon-yonghuicon"> people</span>
+            <span class="share fr iconfont icon-fenxiang"> share</span>
+            <a href="#" class="btn_mao iconfont icon-maoji"> ACCEPT</a>
+          </div>
+        </div>
+      </div>
+      <div class="item-wrapper">
+        <div class="header">
+          <div class="title clearfix">
+            <div class="user_img fl">
+              <img src="img/busy.jpg" alt="">
+            </div>
+            <h5>Martin Groove</h5>
+            <span class=" fr iconfont icon-xing1 save">175</span>
+          </div>
+          <p class="desc">I can basejump from the shard! Can you?</p>
+        </div>
+        <div class="img-wrapper">
+          <div class="img-content">
+            <img src="./img/5.jpg" alt="">
+            <div class="model">
+              <i></i>
+              <span>01:11::03</span>
+            </div>
+          </div>
+          <div class="img-btn">
+            <span class="people fl iconfont icon-yonghuicon"> people</span>
+            <span class="share fr iconfont icon-fenxiang"> share</span>
+            <a href="#" class="btn_mao iconfont icon-maoji"> ACCEPT</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mask"></div>
+    <div class="nav_left">
+      <a href="javascript:;" id="menu1" class="menu iconfont icon-caidan"></a>
+    </div>
+  </div>
+  <script>
+    window.onload=function(){
+      var oBox=document.getElementById('box');
+      var oMenu = document.getElementById('menu');
+      var oMenu1 = document.getElementById('menu1');
+      oMenu.onclick=function(){
+        oBox.className="box showLeft";
+      }
+      oMenu1.onclick = function () {
+        oBox.className = "box";
+      }
+    }
+  </script>
+</body>
+</html>

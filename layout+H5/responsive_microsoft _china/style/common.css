@@ -31,8 +31,68 @@ body{
   text-decoration: underline;
 }
 /* logo 搜索 等 */
+.g_header{
+  padding: 12px;
+  background-color: #f5f5f5;
+}
 .u_logo{
   width: 95px;
   height: 20px;
   background: url(../images/logo.jpg) 0 0 no-repeat;
+  float: left;
+}
+.m_header_icon a{
+  display: inline-block;
+  height: 20px;
+  font-size: 20px;
+  line-height: 20px;
+  color: #000000;
+  margin-left: 36px;
+  font-size: 20px;
+}
+/* 导航 */
+.g_nav{
+  border-bottom: solid 1px #666;
+}
+.g_nav_bd{
+  padding: 0 0 0 12px;
+  height: 50px; 
+  line-height: 50px;
+  position: relative;
+}
+.u_wrlink{
+  font-size: 14px;
+  float: left;
+}
+.u_menu_btn{
+  float: right;
+  width: 48px;
+  height: 48px;
+  border:1px solid #ffffff;
+  line-height: 48px;
+  text-align: center;
+  font-size: 30px;
+}
+.u_mb_active{
+  border-left-color: #666;
+  border-top-color: #666;
+  border-bottom:2px solid #ffffff;
+  position: relative;
+  height: 49px;
+}
+.g_nav_list{
+  position: absolute;
+  left: 0;
+  top: 100%;
+}
+.m_nav_list{
+  padding-left: 20px;
+}
+
+
+
+
+/* 公用样式 */
+html .pcshow{
+  display: none;
 }

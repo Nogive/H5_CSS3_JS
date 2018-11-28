@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JQ——轮播</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="container">
+    <ul class="img-wrapper" id="imgWrapper">
+      <li><a href="#"><img src="./imgs/1.jpg" alt="" /></a></li>
+      <li><a href="#"><img src="./imgs/2.jpg" alt="" /></a></li>
+      <li><a href="#"><img src="./imgs/3.jpg" alt="" /></a></li>
+      <li><a href="#"><img src="./imgs/4.jpg" alt="" /></a></li>
+      <li><a href="#"><img src="./imgs/5.jpg" alt="" /></a></li>
+      <li><a href="#"><img src="./imgs/6.jpg" alt="" /></a></li>
+      <li><a href="#"><img src="./imgs/7.jpg" alt="" /></a></li>
+      <li><a href="#"><img src="./imgs/8.jpg" alt="" /></a></li>
+    </ul>
+    <ul class="indicator" id="indicator">
+      <li class="active"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    <span class="btn next" id="nextBtn"><a href="#">下一张</a></span>  
+    <span class="btn prev" id="prevBtn"><a href="#">上一张</a></span> 
+  </div>
+
+  <script src="./jquery-3.1.1.min.js"></script>
+  <script>
+    $(function(){
+      var dix=500;//移动的距离
+      var total=8;
+      var index=0;//当前索引
+      //next
+      $('#nextBtn').click(function(){
+        if(index>=total-1){
+          index=0;
+        }else{
+          index++;
+        }
+        move(index);
+      });
+      //prev
+      $('#prevBtn').click(function () {
+        if(index<=0){
+          index=total-1;
+        }else{
+          index--;
+        }
+        move(index);
+      });
+      //点击索引
+      $('#indicator li').click(function(e){
+        e.stopPropagation();
+        index=$(this).index();
+        move(index);
+      })
+      function move(index){
+        $('#imgWrapper').css("transform", "translateX(" + (-index * dix) + "px)");
+        $('#indicator li:eq(' + index + ')').addClass('active').siblings().removeClass('active');
+      }
+    })
+  </script>
+</body>
+</html>

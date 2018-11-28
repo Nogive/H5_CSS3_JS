@@ -30,22 +30,33 @@
 /* relative方式实现   */
 .re_container{
   padding: 0 150px 0 100px;
+  /* 解决等高的问题 */
+  overflow: hidden;
 }
 .re_left,.re_main,.re_right{
   float: left;
+  /* 解决等高的问题 */
+  padding-bottom: 10000px;
+  margin-bottom: -10000px;
 }
 .re_main{
   width: 100%;
+  /* 解决等高的问题 */
+  height: 500px;
 }
 .re_left{
   margin-left: -100%;
   position: relative;
   left: -100px;
+  /* 解决等高的问题 */
+  height: 400px;
 }
 .re_right{
   margin-left: -150px;
   position: relative;
   right: -150px;
+  /* 解决等高的问题 */
+  height: 400px;
 }
 
 

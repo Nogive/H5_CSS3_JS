@@ -1,0 +1,114 @@
+@charset "utf-8";
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* 基础样式 */
+.container{
+  border:1px solid #000;
+}
+.left,.main,.right{
+  min-height: 200px;
+}
+.left{
+  width: 100px;
+  background-color: pink;
+}
+.right{
+  background-color: palevioletred;
+  width: 150px;
+}
+.main{
+  width: 100%;
+  background: #38f;
+}
+.title{
+  clear: both;
+}
+
+/* relative方式实现   */
+.re_container{
+  padding: 0 150px 0 100px;
+}
+.re_left,.re_main,.re_right{
+  float: left;
+}
+.re_main{
+  width: 100%;
+}
+.re_left{
+  margin-left: -100%;
+  position: relative;
+  left: -100px;
+}
+.re_right{
+  margin-left: -150px;
+  position: relative;
+  right: -150px;
+}
+
+
+/* flex方式实现   */
+.flex_container{
+  display: flex;
+}
+.flex_left{
+  flex: 0 0 100px;
+  order:-1;
+}
+.flex_main{
+  flex: 1;
+}
+.flex_right{
+  flex: 0 0 150px;
+}
+
+/* absolute 方式实现 */
+.ab_container{
+  position: relative;
+}
+.ab_left,.ab_main,.ab_right{
+  position: absolute;
+  top: 0;
+}
+.ab_left{
+  left: 0;
+  z-index: 2;
+}
+.ab_main{
+  padding: 0 150px 0 100px;
+}
+.ab_right{
+  right: 0;
+  z-index: 2;
+}
+
+
+/* 双飞翼 基础样式 */
+.box{
+  border:1px solid #000;
+}
+.box_m,.box_l,.box_r{
+  min-height: 200px;
+  float: left;
+}
+.box_m{
+  width: 100%;
+  background-color: orchid;
+}
+.mid{
+  margin: 0 150px 0 100px;
+}
+.box_l{
+  width: 100px;
+  background: aqua;
+  margin-left: -100%;
+}
+.box_r{
+  width: 150px;
+  background-color: aquamarine;
+  margin-left: -150px;
+}
+
+

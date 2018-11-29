@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>浮动——瀑布流</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    li{
+      list-style: none;
+    }
+    .container{
+      width: 785px;
+      height: auto;
+      margin: 20px auto;
+    }
+    ul{
+      width: 225px;
+      margin: 5px;
+      float: left;
+    }
+    .container li,.container img{
+      width: 100%;
+    }
+    .container li{
+      border:1px solid #38f;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="div1">
+    <ul>
+      <li>
+        <img src="./images/1.jpg" alt="">
+        <p class="desc">怦然心动</p>
+      </li>
+      <li>
+        <img src="./images/2.jpg" alt="">
+        <p class="desc">怦然心动</p>
+      </li>
+      <li>
+        <img src="./images/3.jpg" alt="">
+        <p class="desc">怦然心动</p>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <img src="./images/4.jpg" alt="">
+        <p class="desc">怦然心动</p>
+      </li>
+      <li>
+        <img src="./images/5.jpg" alt="">
+        <p class="desc">怦然心动</p>
+      </li>
+      <li>
+        <img src="./images/6.jpg" alt="">
+        <p class="desc">怦然心动</p>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <img src="./images/7.jpg" alt="">
+        <p class="desc">怦然心动</p>
+      </li>
+      <li>
+        <img src="./images/8.jpg" alt="">
+        <p class="desc">怦然心动</p>
+      </li>
+      <li>
+        <img src="./images/9.jpg" alt="">
+        <p class="desc">怦然心动</p>
+      </li>
+    </ul>
+  </div>
+  <script>
+    var data=[
+      {
+        src:['./images/10.jpg', './images/11.jpg', './images/1.jpg'],
+        title:['怦然心动2', '怦然心动2', '怦然心动2']
+      },
+      {
+        src: ['./images/10.jpg', './images/11.jpg', './images/1.jpg'],
+        title: ['怦然心动2', '怦然心动2', '怦然心动2']
+      },
+      {
+        src: ['./images/10.jpg', './images/11.jpg', './images/1.jpg'],
+        title: ['怦然心动2', '怦然心动2', '怦然心动2']
+      },
+    ];
+    var bBtn=true;//是否发送请求
+    window.onload=function(){
+      var aUl=document.getElementsByTagName('ul');
+
+      //滚动事件
+      window.onscroll=function(){
+        //可视区高度
+        var viewHeight=document.documentElement.clientHeight;
+        //滚动条滚动的高度
+        var scrollY=document.documentElement.scrollTop ||document.body.scrollTop;
+        for(var i=0;i<aUl.length;i++){
+          var aLi=aUl[i].getElementsByTagName('li');
+          var lastLi=aLi[aLi.length-1];
+          if(posTop(lastLi)< viewHeight + scrollY && bBtn){
+            bBtn=false;
+            //发生请求  后台应该是分页的  xxx.php?page=1&num=10   
+            //没有数据的时候 bBtn=false
+            var list=data;
+            for(var i=0;i<list.length;i++){
+              var liList=list[i];
+              for(var j=0;j<liList.src.length;j++){
+                var oLi = document.createElement('li');
+                oLi.innerHTML = `<li>
+                                <img src="${liList.src[j]}" alt="">
+                                <p class="desc">${liList.title[j]}</p>
+                              </li>`;
+                aUl[i].appendChild(oLi);
+              }
+            }
+          }
+        }
+      };
+
+
+      //获取距离
+      function posTop(obj){
+        var top=0;
+        while(obj){
+          top+=obj.offsetTop;
+          obj=obj.offsetParent;
+        }
+        return top;
+      }
+    }
+  </script>
+</body>
+</html>

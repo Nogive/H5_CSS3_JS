@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>定位——瀑布流</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    li{
+      list-style: none;
+    }
+    .container{
+      width: 785px;
+      height: auto;
+      margin: 20px auto;
+      position: relative;
+    }
+    .container img{
+      width: 225px;
+    }
+    .container li{
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="div1">
+    <ul id="wrapper">
+      <li>
+        <img src="./images/1.jpg" alt="">
+        <p class="desc">怦然心动</p>
+      </li>
+      <li>
+        <img src="./images/2.jpg" alt="">
+        <p class="desc">怦然心动</p>
+      </li>
+      <li>
+        <img src="./images/3.jpg" alt="">
+        <p class="desc">怦然心动</p>
+      </li>
+      <li>
+        <img src="./images/4.jpg" alt="">
+        <p class="desc">怦然心动</p>
+      </li>
+      <li>
+        <img src="./images/5.jpg" alt="">
+        <p class="desc">怦然心动</p>
+      </li>
+      <li>
+        <img src="./images/6.jpg" alt="">
+        <p class="desc">怦然心动</p>
+      </li>
+      <li>
+        <img src="./images/7.jpg" alt="">
+        <p class="desc">怦然心动</p>
+      </li>
+      <li>
+        <img src="./images/8.jpg" alt="">
+        <p class="desc">怦然心动</p>
+      </li>
+      <li>
+        <img src="./images/9.jpg" alt="">
+        <p class="desc">怦然心动</p>
+      </li>
+    </ul>
+  </div>
+  <script>
+    var data=[
+      {
+        src: './images/10.jpg',
+        title: '怦然心动2'
+      },
+      {
+        src: './images/11.jpg',
+        title: '怦然心动2'
+      },
+      {
+        src: './images/10.jpg',
+        title: '怦然心动2'
+      },
+      {
+        src: './images/11.jpg',
+        title: '怦然心动2'
+      },
+      {
+        src: './images/1.jpg',
+        title: '怦然心动2'
+      },
+      {
+        src: './images/2.jpg',
+        title: '怦然心动2'
+      },
+      {
+        src: './images/3.jpg',
+        title: '怦然心动2'
+      },
+      {
+        src: './images/4.jpg',
+        title: '怦然心动2'
+      },
+      {
+        src: './images/5.jpg',
+        title: '怦然心动2'
+      },
+      {
+        src: './images/6.jpg',
+        title: '怦然心动2'
+      }
+    ];
+    var bBtn=true;//是否发送请求
+    window.onload=function(){
+     var aLi = document.getElementsByTagName('li');
+      //存每一列里面的高度
+      var aHeight = {
+        L: [],
+        C: [],
+        R: []
+      }
+      for (var i = 0; i < aLi.length; i++) {
+        //取模  处于哪一列
+        var iNow = i % 3;
+        switch (iNow) {
+          case 0:
+            aLi[i].style.left = '5px';
+            aHeight.L.push(aLi[i].offsetHeight);
+            aLi[i].style.top = getTop(aHeight.L, i) + 'px';
+            break;
+          case 1:
+            aLi[i].style.left = '240px';
+            aHeight.C.push(aLi[i].offsetHeight);
+            aLi[i].style.top = getTop(aHeight.C, i) + 'px';
+            break;
+          case 2:
+            aLi[i].style.left = '475px';
+            aHeight.R.push(aLi[i].offsetHeight);
+            aLi[i].style.top = getTop(aHeight.R, i) + 'px';
+            break;
+        }
+      }
+      function getTop(obj,i){
+        var step = Math.floor(i / 3);
+        var top=0;
+        if (!step) {
+          top=0;
+        } else {
+          var sum = 0;
+          for (var j = 0; j < step; j++) {
+            sum += obj[j] + 5;
+          }
+          top=sum;
+        }
+        return top;
+      };
+
+
+      window.onscroll=function(){
+        var oUl = document.getElementById('wrapper');
+        var alis=oUl.getElementsByTagName('li');
+        //可视区高度
+        var viewHeight = document.documentElement.clientHeight;
+        //滚动条滚动的高度
+        var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+        for(var i=alis.length;i>alis.length-2;i--){
+          var li=alis[i];
+          if (posTop(li) < viewHeight + scrollY && bBtn) {
+            bBtn=false;
+            for(var i=0;i<data.length;i++){
+              var oLi = document.createElement('li');
+              oLi.innerHTML = `<li>
+                                <img src="${data[i].src}" alt="">
+                                <p class="desc">${data[i].title}</p>
+                              </li>`;
+              //oUl.appendChild(oLi);
+            }
+          }
+        }
+      };
+
+      //获取距离
+      function posTop(obj) {
+        var top = 0;
+        while (obj) {
+          top += obj.offsetTop;
+          obj = obj.offsetParent;
+        }
+        return top;
+      }
+    }
+  </script>
+</body>
+</html>

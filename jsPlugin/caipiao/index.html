@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>h5 history 模拟买彩票</title>
+</head>
+<body>
+  <p>35个数中选7个</p>
+  <button id="btn">35选7</button>
+  <div>结果：<span id="res"></span></div>
+  <script>
+    /*
+    1.onhashchange:当hash值有变化的时候触发该事件
+    2.history:
+      -pushState:三个参数：数据 标题（都没实现） 地址（可选）
+      -popstate事件:读取数据 event.state
+      -注意：网址是虚假的，需要在服务器指定对应的页面 不然刷新找不到页面
+    */
+    window.onload=function(){
+      var oBtn=document.getElementById('btn');
+      var oRes=document.getElementById('res');
+      var iNow=1;//history 的网址变量
+      var obj={}; //hash的对应关系
+      oBtn.onclick=function(){
+        var number= getRandomNumber(35, 7);
+        oRes.innerHTML= number;
+        //记录hash
+        // var oRD=Math.random();
+        // obj[oRD]=number;//对应关系
+        // window.location.hash= oRD;
+
+        //history的方式
+        history.pushState(number,'', iNow++);//iNow是网址
+      };
+      
+      //hash 的方式
+      // window.onhashchange=function(){
+      //   var number=obj[window.location.hash.substring(1)]||'';
+      //   oRes.innerHTML=number;
+      // };
+
+      //history的方式
+      window.onpopstate=function(ev){
+        var number=ev.state || '';
+        oRes.innerHTML = number;
+      }
+
+      function getRandomNumber(alls,num){
+        var allArr=[];
+        var numArr=[];
+        for(var i=0;i<alls;i++){
+          allArr.push(i);
+        }
+        for(var i=0;i<num;i++){
+          numArr.push(Math.floor(Math.random()*alls));
+        }
+        return numArr;
+      }
+    }
+  </script>
+</body>
+</html>

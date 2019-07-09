@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/reset.css">
+  <title>rem_测试验证</title>
+  <script src="./js/mobile-util.js"></script>
+  <style>
+    .demo-box{
+      width: 8rem;
+      height: 8rem;
+      background: paleturquoise;
+    }
+    .demo-box1{
+      width: 16rem;
+      height: 2rem;
+      background: indianred;
+    }
+  </style>
+</head>
+<body>
+  <h3>rem用来布局,viewport用来根据dpr对页面进行缩放</h3>
+  <h3>始终将页面分成16份</h3>
+  <h3>每一份的大小为:页面宽度*dpr/16  即HTML的fontsize为：</h3>
+  <p>drp=1 三星: htmlFontSize0 = 360*1/16 = 22.5px</p>
+  <p>drp=1 iphone5s: htmlFontSize1 = 375*1/16 = 23.4375px</p>
+  <p>drp=2 iphone6/7/8: htmlFontSize2 = 375*2/16 = 46.875px</p>
+  <p>drp=3 iphone6p/7p/8p: htmlFontSize3 = 414*3/16 = 77.625px</p>
+  <h3>以750的设计稿为例子 某个元素在设计稿上是375的宽度 则应该设置宽度为：375/htmlFontSize2 = 8rem</h3>
+  <div class="demo-box"></div>
+  <div class="demo-box1"></div>
+</body>
+</html>
